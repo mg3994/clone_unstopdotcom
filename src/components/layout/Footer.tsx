@@ -1,39 +1,73 @@
-import Link from 'next/link';
+import React from 'react';
+import { Mail, Phone } from 'lucide-react';
 
-export default function Footer() {
-  const sections = [
+const Footer = () => {
+  const footerLinks = [
     {
-      title: 'Our Solutions',
-      links: ['Hiring Solutions', 'Branding Solutions', 'Engagement Solutions', 'Assessment Solutions']
+      title: "Our Products",
+      links: ["Technology Solutions", "Recruitment Management", "Assessments", "Hackathons", "Campus Branding"]
     },
     {
-      title: 'Product',
-      links: ['Job Board', 'Competitions', 'Practice', 'Courses', 'Mentorship']
+      title: "Participate",
+      links: ["Competitions", "Quizzes", "Hackathons", "Scholarships", "Internships", "Jobs"]
     },
     {
-      title: 'Support',
-      links: ['About Us', 'Contact Us', 'FAQs', 'Privacy Policy', 'Terms & Conditions']
+      title: "Learn",
+      links: ["Courses", "Articles", "Workshops", "Mentorship", "Projects"]
+    },
+    {
+      title: "Our Presence",
+      links: ["Engineering", "MBA", "Design", "Arts & Science", "School"]
     }
   ];
 
   return (
-    <footer className="bg-[#1c1c1c] text-white pt-16 pb-8">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-          <div className="col-span-2 lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-4 tracking-tighter">unstop</h2>
-            <p className="text-gray-400 max-w-xs mb-6">
-              Empowering students and early talent to learn, practice and get hired.
+    <footer className="bg-white border-t border-slate-100 pt-16 pb-8 hidden lg:block">
+      <div className="max-w-[1440px] mx-auto px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16">
+          {/* Brand Info */}
+          <div className="lg:col-span-1">
+            <img
+              src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg"
+              alt="Unstop"
+              className="h-10 mb-6"
+            />
+            <p className="text-slate-500 font-bold text-sm leading-relaxed mb-8">
+              Connecting talent with opportunities. Your one-stop destination for internships, jobs, and competitions.
             </p>
+            <div className="flex gap-4 mb-8">
+               <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400">
+                  <span className="font-black text-xs">Li</span>
+               </div>
+               <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400">
+                  <span className="font-black text-xs">Ig</span>
+               </div>
+               <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400">
+                  <span className="font-black text-xs">X</span>
+               </div>
+            </div>
+            <div className="space-y-3">
+               <div className="flex items-center gap-3 text-slate-500 font-bold text-sm">
+                  <Mail size={16} className="text-blue-600" />
+                  support@unstop.com
+               </div>
+               <div className="flex items-center gap-3 text-slate-500 font-bold text-sm">
+                  <Phone size={16} className="text-blue-600" />
+                  +91-11-4113-1111
+               </div>
+            </div>
           </div>
 
-          {sections.map((section) => (
+          {/* Links */}
+          {footerLinks.map((section) => (
             <div key={section.title}>
-              <h3 className="font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="text-slate-800 font-black text-sm uppercase tracking-widest mb-6">{section.title}</h4>
+              <ul className="space-y-4">
                 {section.links.map((link) => (
                   <li key={link}>
-                    <Link href="#" className="hover:text-white transition">{link}</Link>
+                    <a href="#" className="text-slate-500 font-bold text-sm hover:text-blue-600 transition-colors">
+                      {link}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -41,17 +75,23 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
-            © 2024 Unstop. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-50 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-[13px] font-bold text-slate-400">
+            © 2024 Unstop. All Rights Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-gray-500">
-            <Link href="#" className="hover:text-white">LinkedIn</Link>
-            <Link href="#" className="hover:text-white">Instagram</Link>
-            <Link href="#" className="hover:text-white">Twitter</Link>
+          <div className="flex items-center gap-8">
+             <a href="#" className="text-[13px] font-bold text-slate-400 hover:text-slate-600 transition-colors">Privacy Policy</a>
+             <a href="#" className="text-[13px] font-bold text-slate-400 hover:text-slate-600 transition-colors">Terms & Conditions</a>
+             <div className="flex gap-3">
+                <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/google-play.png" className="h-8" alt="Google Play" />
+                <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/app-store.png" className="h-8" alt="App Store" />
+             </div>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

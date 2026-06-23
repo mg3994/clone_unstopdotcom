@@ -1,40 +1,96 @@
-import OpportunityCard, { FilterSidebar } from "@/components/shared/ListingComponents";
+"use client";
 
-const jobs = [
-  { title: "Software Development Engineer", company: "Uber", location: "Bangalore", type: "Full Time", registrations: "45,000" },
-  { title: "Product Marketing Manager", company: "Zomato", location: "Gurgaon", type: "Full Time", registrations: "12,400" },
-  { title: "Data Analyst", company: "Flipkart", location: "Remote", type: "Full Time", registrations: "32,100" },
-  { title: "UX Researcher", company: "Cred", location: "Bangalore", type: "Full Time", registrations: "8,800" },
+import React, { useState } from 'react';
+import OpportunityCard, { FilterSidebar, PageHeader } from "@/components/shared/ListingComponents";
+import { Filter, Star, Clock, PlayCircle } from 'lucide-react';
+
+const courses = [
+  {
+    title: "Full Stack Development BootCamp",
+    organization: "Unstop",
+    location: "Online",
+    type: "Certification",
+    registrations: "15,000",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg",
+    category: "Engineering",
+    isHot: true,
+    price: "₹4,999",
+    duration: "6 Months"
+  },
+  {
+    title: "Advanced Data Structures & Algorithms",
+    organization: "Unstop",
+    location: "Online",
+    type: "Self-Paced",
+    registrations: "25,000",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/63e1f7c3272d5_microsoft.png",
+    category: "Coding",
+    isHot: true,
+    price: "₹2,499",
+    duration: "3 Months"
+  }
 ];
 
 export default function CoursesPage() {
-  return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="bg-white border-b border-gray-200 py-12">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Courses</h1>
-          <p className="text-gray-600 max-w-2xl">
-            Learn new skills with curated courses from industry experts.
-          </p>
-        </div>
-      </div>
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="flex">
-          <FilterSidebar />
-          <main className="flex-grow lg:pl-10">
-            <div className="flex justify-between items-center mb-6">
-              <p className="text-sm text-gray-500 font-medium">4 Courses Found</p>
+  return (
+    <div className="flex flex-col min-h-screen pb-20 lg:pb-0">
+      <PageHeader
+        title="Courses"
+        description="Learn new skills with curated courses from industry experts and get certified."
+        stats={[
+          { label: "Active Courses", value: "500+" },
+          { label: "Students", value: "1M+" }
+        ]}
+      />
+
+      <div className="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6 lg:py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
+
+          <main className="flex-1">
+            <div className="flex justify-between items-center mb-8">
+               <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setIsFilterOpen(true)}
+                    className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 shadow-sm"
+                  >
+                     <Filter size={18} />
+                  </button>
+                  <h2 className="text-lg lg:text-xl font-black text-slate-800">Available Courses</h2>
+               </div>
             </div>
 
-            <div className="space-y-4">
-              {[
-                { title: "Full Stack Development", company: "Unstop", location: "Online", type: "Certification", registrations: "15,000" },
-                { title: "Data Structures & Algorithms", company: "Unstop", location: "Online", type: "Course", registrations: "25,000" },
-                { title: "Product Management Masterclass", company: "Unstop", location: "Online", type: "Certification", registrations: "10,000" },
-                { title: "UI/UX Design Essentials", company: "Unstop", location: "Online", type: "Course", registrations: "8,000" },
-              ].map((course, index) => (
-                <OpportunityCard key={index} {...course} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {courses.map((course, i) => (
+                <div key={i} className="bg-white border border-slate-100 rounded-[24px] overflow-hidden hover:shadow-xl transition-all group">
+                   <div className="aspect-video bg-slate-100 relative group-hover:scale-105 transition-transform duration-500">
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                         <PlayCircle size={48} className="text-white" />
+                      </div>
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-blue-600 uppercase">
+                         {course.category}
+                      </div>
+                   </div>
+                   <div className="p-6">
+                      <h3 className="font-black text-lg text-slate-800 mb-2 line-clamp-1">{course.title}</h3>
+                      <div className="flex items-center gap-3 text-sm text-slate-500 font-bold mb-6">
+                         <div className="flex items-center gap-1">
+                            <Star size={14} className="text-orange-400 fill-current" />
+                            4.8
+                         </div>
+                         <div className="flex items-center gap-1">
+                            <Clock size={14} />
+                            {course.duration}
+                         </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                         <span className="text-xl font-black text-slate-900">{course.price}</span>
+                         <button className="px-6 py-3 bg-blue-600 text-white font-black rounded-xl text-sm">Enroll Now</button>
+                      </div>
+                   </div>
+                </div>
               ))}
             </div>
           </main>

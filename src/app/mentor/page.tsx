@@ -1,63 +1,118 @@
-import { Star, MessageSquare, Briefcase, Award } from 'lucide-react';
+'use client';
+
+import React from 'react';
+import { Star, MessageSquare, Briefcase, Award, Search, Filter } from 'lucide-react';
+import { PageHeader } from '@/components/shared/ListingComponents';
 
 const mentors = [
-  { name: "Anish Kumar", role: "SDE 3 @ Google", rating: "5.0", sessions: "150+", price: "Free" },
-  { name: "Priya Singh", role: "Product Manager @ Amazon", rating: "4.9", sessions: "280+", price: "₹499" },
-  { name: "Rahul Sharma", role: "Data Scientist @ Meta", rating: "5.0", sessions: "95+", price: "Free" },
-  { name: "Sneha Patel", role: "UX Lead @ Microsoft", rating: "4.8", sessions: "120+", price: "₹299" },
+  {
+    name: "Anish Kumar",
+    role: "SDE 3 @ Google",
+    rating: "5.0",
+    sessions: "150+",
+    price: "Free",
+    image: "https://d8it4huxumps7.cloudfront.net/uploads/images/63f47e30d7b27_anish.png",
+    skills: ["DSA", "System Design", "Backend"]
+  },
+  {
+    name: "Priya Singh",
+    role: "Product Manager @ Amazon",
+    rating: "4.9",
+    sessions: "280+",
+    price: "₹499",
+    image: "https://d8it4huxumps7.cloudfront.net/uploads/images/63f47e30d7b27_anish.png",
+    skills: ["Product Strategy", "Growth", "Case Study"]
+  },
+  {
+    name: "Rahul Sharma",
+    role: "Data Scientist @ Meta",
+    rating: "5.0",
+    sessions: "95+",
+    price: "Free",
+    image: "https://d8it4huxumps7.cloudfront.net/uploads/images/63f47e30d7b27_anish.png",
+    skills: ["Machine Learning", "Python", "SQL"]
+  },
+  {
+    name: "Sneha Patel",
+    role: "UX Lead @ Microsoft",
+    rating: "4.8",
+    sessions: "120+",
+    price: "₹299",
+    image: "https://d8it4huxumps7.cloudfront.net/uploads/images/63f47e30d7b27_anish.png",
+    skills: ["UI/UX Design", "Figma", "Research"]
+  },
 ];
 
 export default function MentorPage() {
   return (
-    <div className="bg-white min-h-screen">
-      <div className="bg-gray-50 py-20 border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Learn from the <span className="text-blue-600">Best</span></h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Book 1:1 mentorship sessions with top industry professionals to accelerate your career growth.
-          </p>
+    <div className="flex flex-col min-h-screen bg-[#F0F5F9]">
+      <PageHeader
+        title="Mentorship"
+        description="Book 1:1 mentorship sessions with top industry professionals to accelerate your career growth."
+        stats={[
+          { label: "Top Mentors", value: "2,000+" },
+          { label: "Sessions Hosted", value: "50,000+" }
+        ]}
+      />
+
+      <div className="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+           <div className="flex-1 relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search mentors by name, company or skills..."
+                className="w-full h-14 bg-white border border-slate-200 rounded-2xl pl-12 pr-4 text-[15px] focus:outline-none focus:border-blue-500 font-medium"
+              />
+           </div>
+           <button className="h-14 px-8 bg-white border border-slate-200 rounded-2xl flex items-center gap-2 font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+              <Filter size={18} />
+              Filters
+           </button>
         </div>
-      </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col lg:flex-row justify-between items-center mb-12 gap-6">
-          <h2 className="text-2xl font-bold">Featured Mentors</h2>
-          <div className="flex gap-4">
-             <button className="px-6 py-2 border border-gray-200 rounded-full text-sm font-semibold hover:bg-gray-50 transition">Domain</button>
-             <button className="px-6 py-2 border border-gray-200 rounded-full text-sm font-semibold hover:bg-gray-50 transition">Company</button>
-             <button className="px-6 py-2 border border-gray-200 rounded-full text-sm font-semibold hover:bg-gray-50 transition">Sort By</button>
-          </div>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {mentors.map((mentor, i) => (
+            <div key={i} className="bg-white rounded-3xl border border-slate-100 p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all group">
+               <div className="relative mb-6">
+                  <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-50">
+                    <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 bg-white p-1 rounded-full shadow-md">
+                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">
+                        <Star size={14} fill="currentColor" />
+                     </div>
+                  </div>
+               </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mentors.map((mentor) => (
-            <div key={mentor.name} className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition flex flex-col items-center p-8 text-center group">
-              <div className="w-32 h-32 bg-gray-100 rounded-full mb-6 relative group-hover:scale-105 transition">
-                 <div className="absolute bottom-0 right-2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white flex items-center justify-center">
-                    <Star className="w-4 h-4 text-white fill-current" />
-                 </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">{mentor.name}</h3>
-              <p className="text-sm text-gray-500 mb-6">{mentor.role}</p>
+               <h3 className="text-lg font-black text-slate-800 mb-1">{mentor.name}</h3>
+               <p className="text-[13px] font-bold text-blue-600 mb-4">{mentor.role}</p>
 
-              <div className="flex gap-6 mb-8 text-xs font-semibold text-gray-400">
-                 <div className="flex items-center gap-1">
-                    <MessageSquare className="w-4 h-4" /> {mentor.sessions}
-                 </div>
-                 <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 text-orange-400" /> {mentor.rating}
-                 </div>
-              </div>
+               <div className="flex flex-wrap justify-center gap-2 mb-6">
+                  {mentor.skills.map(skill => (
+                    <span key={skill} className="px-3 py-1 bg-slate-50 text-slate-500 text-[11px] font-bold rounded-full border border-slate-100">
+                      {skill}
+                    </span>
+                  ))}
+               </div>
 
-              <div className="mt-auto w-full">
-                <div className="flex justify-between items-center mb-4">
-                   <span className="text-lg font-bold text-blue-600">{mentor.price}</span>
-                   <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Per Session</span>
-                </div>
-                <button className="w-full py-3 bg-gray-900 text-white font-bold rounded-xl hover:bg-blue-600 transition">
-                  Book Now
-                </button>
-              </div>
+               <div className="w-full pt-6 border-t border-slate-50 flex items-center justify-between mb-6">
+                  <div className="text-left">
+                     <p className="text-[10px] font-black text-slate-400 uppercase">Rating</p>
+                     <div className="flex items-center gap-1">
+                        <span className="text-[14px] font-black text-slate-800">{mentor.rating}</span>
+                        <Star size={12} className="text-orange-400 fill-current" />
+                     </div>
+                  </div>
+                  <div className="text-right">
+                     <p className="text-[10px] font-black text-slate-400 uppercase">Price</p>
+                     <span className="text-[14px] font-black text-blue-600">{mentor.price}</span>
+                  </div>
+               </div>
+
+               <button className="w-full py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all text-[14px]">
+                  Book 1:1 Session
+               </button>
             </div>
           ))}
         </div>

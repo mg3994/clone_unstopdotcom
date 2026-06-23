@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, Menu } from 'lucide-react';
+import Link from 'next/link';
 
 interface TopBarProps {
   onToggleSidebar?: () => void;
@@ -13,16 +14,20 @@ const TopBar = ({ onToggleSidebar }: TopBarProps) => {
         <div className="flex items-center gap-3">
            <button
              onClick={onToggleSidebar}
+             id="mobile-menu-toggle"
              className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors"
+             aria-label="Open Menu"
            >
               <Menu size={24} className="text-slate-600" />
            </button>
 
-           <img
-            src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg"
-            alt="Unstop"
-            className="h-8 lg:h-9 w-auto cursor-pointer"
-          />
+           <Link href="/">
+             <img
+              src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg"
+              alt="Unstop"
+              className="h-8 lg:h-9 w-auto cursor-pointer"
+            />
+           </Link>
         </div>
 
         {/* Middle Section: Search */}
@@ -39,9 +44,9 @@ const TopBar = ({ onToggleSidebar }: TopBarProps) => {
 
         {/* Right Section: Actions */}
         <div className="flex items-center gap-3 lg:gap-4">
-          <button className="hidden sm:block px-6 lg:px-8 h-10 bg-blue-600 text-white rounded-lg text-[15px] font-semibold hover:bg-blue-700 transition-colors shadow-md shadow-blue-100">
+          <Link href="/auth/login" className="hidden sm:block px-6 lg:px-8 h-10 bg-blue-600 text-white rounded-lg text-[15px] font-semibold hover:bg-blue-700 transition-colors shadow-md shadow-blue-100 flex items-center justify-center">
             Login
-          </button>
+          </Link>
 
           <button className="flex items-center gap-2 px-4 lg:px-5 h-[42px] bg-white border border-blue-600 text-blue-700 rounded-full text-[14px] font-bold hover:bg-blue-50 transition-colors whitespace-nowrap">
             <img src="https://cdn.unstop.com/assets/icons/un_bag_for_business.svg" className="w-5 h-5" alt="Business" />
