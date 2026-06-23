@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import Sidebar from "@/components/layout/Sidebar";
+import TopBar from "@/components/layout/TopBar";
+import MobileBottomMenu from "@/components/layout/MobileBottomMenu";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Unstop Clone | Best Ever Clone",
-  description: "A high-fidelity clone of Unstop.com built with Next.js and Tailwind CSS.",
+  title: "Internships | Jobs | Competitions | Hackathons | Courses - Unstop",
+  description: "Your one stop career platform.",
 };
 
 export default function RootLayout({
@@ -26,12 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+      <body className={inter.className}>
+        <div className="flex h-screen overflow-hidden bg-workspace">
+          <Sidebar />
+          <div className="flex flex-col flex-1 min-w-0 h-full overflow-hidden relative">
+            <TopBar />
+            <main id="app-main-container" className="flex-1 overflow-y-auto bg-white">
+              {children}
+            </main>
+            <MobileBottomMenu />
+          </div>
+        </div>
       </body>
     </html>
   );

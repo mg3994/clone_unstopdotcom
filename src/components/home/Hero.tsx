@@ -1,90 +1,117 @@
-'use client';
+import React from 'react';
 
-import { motion } from 'framer-motion';
+const categoryCards = [
+  {
+    id: 'internships',
+    title: 'Internships',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships_new.png',
+    link: '/internships',
+    gradient: 'from-[#E9F4FF] via-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'jobs',
+    title: 'Jobs',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png',
+    link: '/jobs',
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'competitions',
+    title: 'Competitions',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/competitions-new-1.png',
+    link: '/competitions',
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'mock-tests',
+    title: 'Mock Tests',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-tests-new.png',
+    link: '/practice/mock-test',
+    isAi: true,
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'mock-interviews',
+    title: 'Mock Interviews',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png',
+    link: '/practice/mock-interview',
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'mentorships',
+    title: 'Mentorships',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorships-new.png',
+    link: '/mentor',
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: 'courses',
+    title: 'Courses',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png',
+    link: '/courses',
+    isAi: true,
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+  {
+    id: '100-days-to-code',
+    title: '100 Days to Code',
+    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/avif/100-days-to-code-new.png',
+    link: '/practice/100-days-of-code',
+    gradient: 'from-[#E9F4FF] to-[#FFF1BF]'
+  },
+];
 
-export default function Hero() {
+const Hero = () => {
   return (
-    <section className="relative bg-white pt-16 pb-24 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.05] mb-8 tracking-tight">
-              Unlock Your <span className="text-blue-600">Potential</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
-              Explore opportunities from across the globe to learn, showcase your skills, and get hired by top companies.
-            </p>
+    <section className="py-6 lg:py-10 px-4">
+      <div className="container-un">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 lg:mb-8 gap-4">
+          <h1 className="text-[30px] lg:text-[56px] leading-[1.1] font-bold text-grey-1300">
+            Unlock Your <span className="text-blue-700 relative inline-block">
+              Career!
+              <img
+                src="https://d8it4huxumps7.cloudfront.net/uploads/images/avif/home_heading_after.png"
+                className="absolute -bottom-2 lg:-bottom-4 left-0 w-full"
+                alt=""
+              />
+            </span>
+          </h1>
 
-            <div className="flex flex-wrap gap-4 mb-16">
-              <button className="px-10 py-4 bg-blue-600 text-white font-black rounded-full hover:bg-blue-700 transition shadow-xl shadow-blue-200 active:scale-95">
-                Explore Now
-              </button>
-              <button className="px-10 py-4 bg-white text-blue-600 font-black border-2 border-blue-600 rounded-full hover:bg-blue-50 transition active:scale-95">
-                Host Opportunity
-              </button>
-            </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-[#ece5ff] to-transparent rounded-lg w-fit">
+            <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/avif/hero_user_side_img.png" className="h-6 w-auto" alt="" />
+            <span className="text-xs lg:text-sm text-purple-800 font-medium">
+              Access to <strong className="font-semibold">850M+</strong> profiles
+            </span>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-3 gap-8">
-              <div>
-                <p className="text-3xl font-black text-gray-900">10M+</p>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Users</p>
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-3 lg:gap-5">
+          {categoryCards.map((card) => (
+            <a
+              key={card.id}
+              href={card.link}
+              className={`flex flex-col justify-between p-3 lg:p-4 rounded-[24px] bg-gradient-to-br ${card.gradient} transition-transform hover:scale-105 min-h-[100px] lg:min-h-[150px] relative overflow-hidden group`}
+            >
+              <div className="text-[10px] lg:text-sm font-semibold text-grey-1300 z-10">
+                {card.title}
+                {card.isAi && (
+                  <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/69522b252b0f2_ai_vector.svg" className="inline-block ml-1 w-3 lg:w-4" alt="AI" />
+                )}
               </div>
-              <div>
-                <p className="text-3xl font-black text-gray-900">50K+</p>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Opportunities</p>
+              <div className="flex justify-center mt-2 z-10">
+                <img src={card.img} alt={card.title} className="w-full max-w-[80px] lg:max-w-none h-auto object-contain" />
               </div>
-              <div>
-                <p className="text-3xl font-black text-gray-900">10K+</p>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Organizations</p>
-              </div>
-            </div>
-          </motion.div>
 
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="w-full aspect-square bg-blue-50 rounded-[40px] flex items-center justify-center relative overflow-hidden">
-               <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [3, 5, 3]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-4/5 h-4/5 bg-blue-600/10 rounded-3xl border-2 border-blue-600/20 absolute -right-8 top-12"
-               ></motion.div>
-               <motion.div
-                animate={{
-                  y: [0, 20, 0],
-                  rotate: [-3, -5, -3]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="w-4/5 h-4/5 bg-white rounded-3xl shadow-2xl border border-gray-100 relative z-10 flex flex-col p-8"
-               >
-                  <div className="w-1/2 h-6 bg-gray-100 rounded-full mb-6"></div>
-                  <div className="w-full h-48 bg-blue-50 rounded-2xl mb-8 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-blue-600 rounded-full opacity-20 animate-pulse"></div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="w-full h-4 bg-gray-100 rounded-full"></div>
-                    <div className="w-3/4 h-4 bg-gray-100 rounded-full"></div>
-                    <div className="w-1/2 h-4 bg-gray-100 rounded-full"></div>
-                  </div>
-                  <div className="mt-auto flex justify-between items-center">
-                    <div className="w-32 h-12 bg-blue-600 rounded-2xl"></div>
-                    <div className="w-12 h-12 bg-gray-100 rounded-full"></div>
-                  </div>
-               </motion.div>
-            </div>
-          </motion.div>
+              {/* Background pattern similar to original */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity">
+                <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/69450295983d9_home_page_card_bg_element.svg" className="w-full h-full object-cover mix-blend-soft-light" alt="" />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Hero;
