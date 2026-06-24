@@ -1,116 +1,124 @@
 import React from 'react';
+import Link from 'next/link';
 import Hero from '@/components/home/Hero';
+import FeaturedCarousel from '@/components/home/FeaturedCarousel';
+import OpportunityCard from '@/components/home/OpportunityCard';
+import Stats from '@/components/Stats';
+import PracticeSection from '@/components/PracticeSection';
+import JobsSection from '@/components/JobsSection';
 
-const featuredItems = [
+const competitions = [
   {
-    id: 1,
-    title: 'Coca-Cola Internship + ₹2.25L Rewards',
-    tag: 'Register Now!',
-    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/custom_featured/fullbanner/6a310fdc9cc9d___new_featured_banner__1_.jpg?d=451x676'
+    title: "Battle of Bands",
+    organization: "Dr. B. R. Ambedkar School of Specialised Excellence",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a395591f3d3a_01.jpeg?d=120x120",
+    location: "Online",
+    link: "#"
   },
   {
-    id: 2,
-    title: 'Unstop CLUBVERSE 2026',
-    tag: 'Online • Free',
-    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/fullbanner/6a3920d1ad7c6_unstop-clubverse-2026.jpg?d=451x676'
+    title: "Unstop CLUBVERSE 2026",
+    organization: "Unstop",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a2b97761bb8c_Unstop-Logo-Blue-Large.png?d=120x120",
+    location: "Online",
+    link: "#"
   },
   {
-    id: 3,
-    title: 'Samsung Galaxy AI Treasure Hunt 2026',
-    tag: 'Register Now',
-    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/custom_featured/fullbanner/6a2913c89d63a_448_x_676_px.jpg?d=451x676'
+    title: "Stoxra National Trading Championship 2026",
+    organization: "IIMT University IIMTU",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a367356c5568_whatsapp_image_2026-06-05_at_23.41.59.jpeg?d=120x120",
+    location: "Online",
+    link: "#",
+    prizes: "₹ 52,000"
   },
   {
-    id: 4,
-    title: 'BOSCH BMU Innovation Challenge',
-    tag: 'Register Now!',
-    img: 'https://d8it4huxumps7.cloudfront.net/uploads/images/custom_featured/fullbanner/6a30d786988e4_homepage_banner__1_.png?d=451x676'
-  },
+    title: "Stoxra Creators' League 2026",
+    organization: "IIMT University IIMTU",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a366cd72fae9_untitled_design__21___1_.png?d=120x120",
+    location: "Online",
+    link: "#",
+    prizes: "₹ 57,000"
+  }
 ];
 
-const companies = [
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/692825f25a201_abinbev_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/692826035fedd_aditya_birla_group_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/6928262b69bec_amazon_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/69282664232be_coca_cola_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/692826742f537_flipkar_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/692827fc103fa_loreal_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/692826d79d4e3_mahindra_logo.png?d=180x80',
-  'https://d8it4huxumps7.cloudfront.net/uploads/images/6928274382f7a_samsung_logo.png?d=180x80',
+const internships = [
+  {
+    title: "Management Trainee - Talent Acquisition",
+    organization: "Zycus Infotech Private Limited",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a33409bc5d_zycus_infotech_private_limited.png?d=120x120",
+    location: "Hybrid | Mumbai, Bangalore",
+    link: "#"
+  },
+  {
+    title: "Business Development Internship",
+    organization: "Kraftpixel Digital Solutions",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a31efe04c3_kraftpixel_digital_solutions_private_limitedpng",
+    location: "In Office | Mumbai",
+    link: "#"
+  },
+  {
+    title: "Acquisition Internship",
+    organization: "StayVista",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a2c911e0e9_stayvista.jpg?d=120x120",
+    location: "In Office | North Goa",
+    link: "#"
+  },
+  {
+    title: "AI Internship",
+    organization: "Zycus Infotech Private Limited",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a3700520e6_zycus_infotech_private_limited.png?d=120x120",
+    location: "Hybrid | Mumbai",
+    link: "#"
+  }
 ];
 
 export default function Home() {
   return (
-    <div className="pb-24 lg:pb-10">
+    <div className="flex flex-col gap-4 pb-20">
       <Hero />
 
-      {/* Featured Section */}
-      <section className="py-10 bg-blue-50/30">
-        <div className="container-un">
-          <h2 className="un-hdng mb-6">Featured</h2>
-          <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
-            {featuredItems.map((item) => (
-              <div key={item.id} className="min-w-[200px] lg:min-w-[226px] bg-white border border-grey-200 rounded-2xl overflow-hidden group cursor-pointer">
-                <div className="aspect-[2/3] overflow-hidden">
-                  <img src={item.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="" />
-                </div>
-                <div className="p-4">
-                  <div className="text-[10px] font-medium text-grey-800 mb-1 border border-grey-200 rounded-full px-2 py-0.5 w-fit">
-                    {item.tag}
-                  </div>
-                  <h3 className="text-sm font-semibold text-grey-1100 line-clamp-2 leading-snug group-hover:text-blue-700 transition-colors">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="px-6">
+        <FeaturedCarousel />
+      </div>
 
-      {/* Trusted By Section */}
-      <section className="py-12 border-t border-grey-100">
-        <div className="container-un">
-          <h2 className="text-xl font-bold text-center text-grey-1300 mb-8">
-            <span className="text-blue-700">Trusted</span> by Industry Veterans
-          </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-70">
-            {companies.map((logo, i) => (
-              <img key={i} src={logo} className="h-8 lg:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all" alt="Company" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12">
-        <div className="container-un">
-          <div className="bg-white rounded-3xl p-6 lg:p-10 border border-grey-200">
-            <h2 className="text-sm text-grey-800 uppercase tracking-widest mb-2">Profiles</h2>
-            <div className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-10">
-              <div className="text-7xl lg:text-[110px] font-bold text-blue-700 leading-none">850<span className="text-4xl lg:text-6xl text-blue-700/50">M</span></div>
-              <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6">
-                 <div>
-                    <h3 className="text-xs text-grey-800 mb-1">Assessments</h3>
-                    <div className="text-2xl font-bold text-grey-1300">22.3<span className="text-blue-700">M+</span></div>
-                 </div>
-                 <div>
-                    <h3 className="text-xs text-grey-800 mb-1">Opportunities</h3>
-                    <div className="text-2xl font-bold text-grey-1300">140<span className="text-blue-700">K+</span></div>
-                 </div>
-                 <div>
-                    <h3 className="text-xs text-grey-800 mb-1">Organisations</h3>
-                    <div className="text-2xl font-bold text-grey-1300">42<span className="text-blue-700">K+</span></div>
-                 </div>
-                 <div>
-                    <h3 className="text-xs text-grey-800 mb-1">Brands trust us</h3>
-                    <div className="text-2xl font-bold text-grey-1300">800<span className="text-blue-700">+</span></div>
-                 </div>
-              </div>
+      <section className="px-6 py-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-end mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-[#1c4980]">Competitions</h2>
+              <p className="text-[#8692a4] text-sm mt-1">Uncover the most talked-about competitions today.</p>
             </div>
+            <Link href="/competitions" className="text-[#007aff] font-semibold text-sm hover:underline">View All</Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {competitions.map((comp, idx) => (
+              <OpportunityCard key={idx} {...comp} />
+            ))}
           </div>
         </div>
       </section>
+
+      <section className="px-6 py-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-end mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-[#1c4980]">Internships</h2>
+              <p className="text-[#8692a4] text-sm mt-1">Unleash internships tailored to your aspirations.</p>
+            </div>
+            <Link href="/internships" className="text-[#007aff] font-semibold text-sm hover:underline">View All</Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {internships.map((intern, idx) => (
+              <OpportunityCard key={idx} {...intern} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <JobsSection />
+
+      <PracticeSection />
+
+      <Stats />
     </div>
   );
 }

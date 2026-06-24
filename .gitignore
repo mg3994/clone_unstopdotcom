@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Verification artifacts
+*.png
+verify_full_home.js
+scrape_competitions.js
+unstop_home.html

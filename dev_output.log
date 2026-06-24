@@ -1,0 +1,30 @@
+
+> temp-clone@0.1.0 dev
+> next dev -p 3002
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3002
+- Network:       http://192.168.0.2:3002
+✓ Ready in 1465ms
+
+ GET / 200 in 1550ms (next.js: 721ms, application-code: 829ms)
+ GET /competitions 200 in 251ms (next.js: 65ms, application-code: 187ms)
+ GET /jobs 200 in 171ms (next.js: 54ms, application-code: 117ms)
+ GET /internships 200 in 254ms (next.js: 95ms, application-code: 159ms)
+ GET /practice 200 in 200ms (next.js: 45ms, application-code: 155ms)
+ GET /mentor 200 in 128ms (next.js: 33ms, application-code: 95ms)
+ GET /events 200 in 1507ms (next.js: 1348ms, application-code: 159ms)
+ GET /courses 200 in 253ms (next.js: 77ms, application-code: 176ms)
+ GET / 200 in 183ms (next.js: 8ms, application-code: 175ms)
+ GET / 200 in 240ms (next.js: 6ms, application-code: 234ms)
+ GET / 200 in 254ms (next.js: 15ms, application-code: 239ms)
+ GET / 200 in 202ms (next.js: 5ms, application-code: 198ms)
+ GET /competitions 200 in 116ms (next.js: 7ms, application-code: 109ms)
+ GET /jobs 200 in 126ms (next.js: 21ms, application-code: 104ms)
+ GET /internships 200 in 239ms (next.js: 20ms, application-code: 219ms)
+ GET /practice 200 in 114ms (next.js: 29ms, application-code: 84ms)
+ GET /mentor 200 in 133ms (next.js: 35ms, application-code: 98ms)
+ GET /events 200 in 253ms (next.js: 51ms, application-code: 202ms)
+ GET /courses 200 in 132ms (next.js: 26ms, application-code: 106ms)
+ GET /auth/login 200 in 1302ms (next.js: 1148ms, application-code: 155ms)
+ GET /auth/signup 200 in 1367ms (next.js: 1298ms, application-code: 69ms)

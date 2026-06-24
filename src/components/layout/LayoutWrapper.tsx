@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar';
+import PersonaSidebar from './PersonaSidebar';
+import NavSidebar from './NavSidebar';
 import TopBar from './TopBar';
 import MobileBottomMenu from './MobileBottomMenu';
 import Footer from './Footer';
@@ -9,14 +10,16 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    setIsSidebarOpen(false);
+    setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   const navItems = [
     { label: 'Home', path: '/', iconPos: '0 0' },
@@ -33,20 +36,44 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#e5effa]">
-      <div className="hidden lg:block">
-        <Sidebar />
+      {/* Persona Sidebar - Desktop only */}
+      <div className="hidden lg:block h-full">
+        <PersonaSidebar isExpanded={isExpanded} onToggle={toggleExpanded} />
       </div>
 
-      {isSidebarOpen && (
+      {/* Main Container */}
+      <div className="flex flex-col flex-1 min-w-0 h-full overflow-hidden relative">
+        <TopBar onToggleSidebar={toggleMobileMenu} />
+
+        <div className="flex flex-1 overflow-hidden">
+          {/* Navigation Sidebar - Desktop only */}
+          <div className="hidden lg:block h-full">
+            <NavSidebar isExpanded={isExpanded} />
+          </div>
+
+          {/* Actual Content Area */}
+          <main id="app-main-container" className="flex-1 overflow-y-auto bg-white rounded-tl-[32px] shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] relative">
+            <div className="min-h-[calc(100vh-72px)]">
+              {children}
+            </div>
+            <Footer />
+          </main>
+        </div>
+
+        <MobileBottomMenu />
+      </div>
+
+      {/* Mobile Drawer */}
+      {isMobileMenuOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black/50 z-[2000] transition-opacity animate-in fade-in duration-300"
-          onClick={() => setIsSidebarOpen(false)}
+          onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
       <div className={`
         lg:hidden fixed inset-y-0 left-0 w-[300px] bg-white z-[2001] transform transition-transform duration-300 ease-in-out shadow-2xl
-        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
          <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-white sticky top-0 z-10">
             <img
@@ -55,7 +82,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
               className="h-7 w-auto"
             />
             <button
-              onClick={() => setIsSidebarOpen(false)}
+              onClick={() => setIsMobileMenuOpen(false)}
               className="p-2 hover:bg-slate-50 rounded-full text-slate-400 transition-colors"
             >
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -94,7 +121,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
                <div className="pt-6 border-t border-slate-100">
                   <p className="px-3 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">Switch Role</p>
                   <div className="grid grid-cols-1 gap-3">
-                     <button className="flex items-center gap-3 p-4 rounded-2xl border-2 border-blue-600 bg-blue-50">
+                     <button className="flex items-center gap-3 p-4 rounded-2xl border-2 border-[#0073e6] bg-blue-50">
                         <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/user-color.svg" className="w-6 h-6" alt="" />
                         <span className="font-bold text-blue-700">Talent</span>
                      </button>
@@ -106,15 +133,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
                </div>
             </div>
          </div>
-      </div>
-
-      <div className="flex flex-col flex-1 min-w-0 h-full overflow-hidden relative">
-        <TopBar onToggleSidebar={toggleSidebar} />
-        <main id="app-main-container" className="flex-1 overflow-y-auto bg-white rounded-tl-[24px] lg:rounded-tl-[32px] shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)]">
-          {children}
-          <Footer />
-        </main>
-        <MobileBottomMenu />
       </div>
     </div>
   );

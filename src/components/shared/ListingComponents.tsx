@@ -2,6 +2,8 @@
 
 import { MapPin, Users, Calendar, Filter, Briefcase, Clock, ChevronDown, Star, Eye, X } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function OpportunityCard({
   title,
@@ -20,9 +22,23 @@ export function OpportunityCard({
 }: any) {
   const org = organization || company;
   const secondaryInfo = stipend || (registrations ? `${registrations} Registered` : null);
+  const pathname = usePathname();
+
+  // Determine the base route for slug linking
+  const getSlugLink = () => {
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    if (pathname.includes('/competitions')) return `/competitions/${slug}`;
+    if (pathname.includes('/jobs')) return `/jobs/${slug}`;
+    if (pathname.includes('/internships')) return `/internships/${slug}`;
+    if (pathname.includes('/mentor')) return `/mentor/${slug}`;
+    if (pathname.includes('/events')) return `/events/${slug}`;
+    if (pathname.includes('/courses')) return `/courses/${slug}`;
+    if (pathname.includes('/practice')) return `/practice/${slug}`;
+    return '#';
+  };
 
   return (
-    <div className="bg-white border border-slate-100 rounded-[24px] p-4 lg:p-5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer group flex gap-4 lg:gap-5 items-start relative overflow-hidden">
+    <Link href={getSlugLink()} className="bg-white border border-slate-100 rounded-[24px] p-4 lg:p-5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer group flex gap-4 lg:gap-5 items-start relative overflow-hidden">
       {isHot && (
         <div className="absolute top-0 right-0">
           <div className="bg-orange-500 text-white text-[9px] lg:text-[10px] font-black px-3 lg:px-4 py-1 rounded-bl-xl uppercase tracking-wider shadow-sm">
@@ -85,7 +101,7 @@ export function OpportunityCard({
            </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
