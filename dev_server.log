@@ -1,0 +1,25 @@
+
+> unstop-clone@0.1.0 dev
+> next dev -p 3060
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3060
+- Network:       http://192.168.0.2:3060
+✓ Ready in 566ms
+
+ GET / 200 in 1038ms (next.js: 302ms, application-code: 736ms)
+ GET / 200 in 316ms (next.js: 6ms, application-code: 310ms)
+✓ Compiled in 53ms
+✓ Compiled in 136ms
+ GET / 200 in 354ms (next.js: 14ms, application-code: 339ms)
+✓ Compiled in 172ms
+ HEAD / 200 in 847ms (next.js: 162ms, application-code: 685ms)
+✓ Compiled in 116ms
+ GET / 200 in 275ms (next.js: 10ms, application-code: 265ms)
+ HEAD / 200 in 168ms (next.js: 5ms, application-code: 163ms)
+ GET / 200 in 2.9s (next.js: 933ms, application-code: 1927ms)
+ GET / 200 in 240ms (next.js: 5ms, application-code: 234ms)
+ GET / 200 in 366ms (next.js: 7ms, application-code: 360ms)
+ GET / 200 in 485ms (next.js: 9ms, application-code: 476ms)
+ GET / 200 in 752ms (next.js: 212ms, application-code: 539ms)
+Killed

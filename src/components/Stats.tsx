@@ -4,47 +4,47 @@ const stats = [
   {
     number: "5M+",
     label: "Active Students",
-    color: "from-blue-500 to-blue-700"
+    color: "text-[#007aff]"
   },
   {
     number: "10K+",
     label: "Opportunities",
-    color: "from-purple-500 to-purple-700"
+    color: "text-[#7b61ff]"
   },
   {
     number: "800+",
     label: "Companies",
-    color: "from-orange-500 to-orange-700"
+    color: "text-[#ff9900]"
   },
   {
     number: "20K+",
     label: "Colleges",
-    color: "from-green-500 to-green-700"
+    color: "text-[#00c2ff]"
   }
 ];
 
 const Stats = () => {
   return (
     <section className="py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-md">
-            <h2 className="text-3xl font-bold text-[#1c4980] mb-4">
+      <div className="container-un">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="flex-1">
+            <h2 className="text-4xl font-black text-grey-1300 mb-4 leading-tight">
               Our Numbers <br />
-              <span className="text-blue-600">Speak for Themselves</span>
+              <span className="text-blue-700">Speak for Themselves</span>
             </h2>
-            <p className="text-[#8692a4]">
+            <p className="text-grey-800 text-lg">
               We believe in creating a world where everyone has the opportunity to learn, grow, and succeed.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 w-full md:w-auto">
+          <div className="flex-1 grid grid-cols-2 gap-10">
             {stats.map((stat, idx) => (
-              <div key={idx} className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100 min-w-[160px]">
-                <span className={`text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r ${stat.color}`}>
+              <div key={idx} className="flex flex-col">
+                <span className={`text-5xl font-black ${stat.color} mb-2 tracking-tight`}>
                   {stat.number}
                 </span>
-                <span className="text-sm font-semibold text-[#1c4980] mt-1 text-center">
+                <span className="text-lg font-bold text-grey-1100">
                   {stat.label}
                 </span>
               </div>
@@ -52,12 +52,18 @@ const Stats = () => {
           </div>
         </div>
 
-        <div className="mt-16 p-8 bg-gradient-to-r from-[#1c4980] to-[#007aff] rounded-[32px] text-white flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Are you an Industry Veteran?</h3>
-            <p className="opacity-90">Share your experience and guide the next generation of talent.</p>
+        <div className="mt-20 relative overflow-hidden bg-[#1c4980] rounded-[40px] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 group">
+          {/* Background Decorative Circles */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20 -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400 rounded-full blur-[100px] opacity-20 -ml-32 -mb-32"></div>
+
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Are you an Industry Veteran?</h3>
+            <p className="text-blue-100 text-lg max-w-xl">
+              Share your experience and guide the next generation of talent. Join our elite pool of mentors.
+            </p>
           </div>
-          <button className="bg-white text-[#1c4980] px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all whitespace-nowrap">
+          <button className="relative z-10 bg-white text-[#1c4980] px-10 py-4 rounded-full font-black text-lg hover:bg-blue-50 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap">
             Join as a Mentor
           </button>
         </div>

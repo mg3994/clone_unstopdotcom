@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
@@ -33,15 +33,24 @@ const NavSidebar = ({ isExpanded }: NavSidebarProps) => {
         {
           title: "Assessments",
           items: [
-            { label: "Mock Tests", description: "Practice with real exam scenarios", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-tests-new.png" },
-            { label: "Adaptive Practice", description: "Personalized learning paths", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png" }
+            { label: "Mock Tests", description: "Practice with real exam scenarios", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-tests-new.png", href: "/practice" },
+            { label: "Adaptive Practice", description: "Personalized learning paths", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png", href: "/practice" },
+            { label: "Skill Assessment", description: "Get certified by experts", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships-new.png", href: "/practice" }
           ]
         },
         {
           title: "Coding",
           items: [
-            { label: "100 Days of Code", description: "Consistency is key", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/100-days-to-code-new.png" },
-            { label: "Code Editor", description: "Write and run code online", icon: "https://cdn.unstop.com/assets/practice/project.svg" }
+            { label: "100 Days of Code", description: "Consistency is key", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/100-days-to-code-new.png", href: "/practice" },
+            { label: "Code Editor", description: "Write and run code online", icon: "https://cdn.unstop.com/assets/practice/project.svg", href: "/practice" },
+            { label: "Projects", description: "Build real-world projects", icon: "https://cdn.unstop.com/assets/practice/project.svg", href: "/practice" }
+          ]
+        },
+        {
+          title: "Quizzes",
+          items: [
+            { label: "Daily Quiz", description: "Win rewards every day", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png", href: "/practice" },
+            { label: "Topic-wise Quiz", description: "Master specific topics", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png", href: "/practice" }
           ]
         }
       ]
@@ -50,24 +59,19 @@ const NavSidebar = ({ isExpanded }: NavSidebarProps) => {
       title: "Jobs",
       sections: [
         {
-          title: "Explore",
+          title: "Jobs",
           items: [
-            { label: "Full Time Jobs", description: "Start your career", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png" },
-            { label: "Government Jobs", description: "Public sector opportunities", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png" },
-            { label: "Internships", description: "Professional experience", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships-new.png" }
+            { label: "Full Time Jobs", description: "Start your career", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png", href: "/jobs" },
+            { label: "Government Jobs", description: "Public sector opportunities", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png", href: "/jobs" },
+            { label: "Work from Home", description: "Flexible opportunities", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/jobs-new.png", href: "/jobs" }
           ]
-        }
-      ]
-    },
-    competitions: {
-      title: "Competitions",
-      sections: [
+        },
         {
-          title: "Popular",
+          title: "Internships",
           items: [
-            { label: "All Competitions", description: "Explore all opportunities", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/competitions-new.png" },
-            { label: "Hackathons", description: "Solve real-world problems", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/hackathons-new.png" },
-            { label: "Quizzes", description: "Test your knowledge", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/quizzes-new.png" }
+            { label: "Paid Internships", description: "Earn while you learn", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships-new.png", href: "/internships" },
+            { label: "Internships with PPO", description: "Gateway to full-time roles", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships-new.png", href: "/internships" },
+            { label: "Virtual Internships", description: "Work remotely", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/internships-new.png", href: "/internships" }
           ]
         }
       ]
@@ -78,9 +82,15 @@ const NavSidebar = ({ isExpanded }: NavSidebarProps) => {
         {
           title: "Guidance",
           items: [
-            { label: "Find a Mentor", description: "Book 1-on-1 sessions", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorship-new.png" },
-            { label: "Mock Interview", description: "Prepare with experts", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png" },
-            { label: "Become a Mentor", description: "Guide the next generation", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorship-new.png" }
+            { label: "Find a Mentor", description: "Book 1-on-1 sessions", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorship-new.png", href: "/mentor" },
+            { label: "Mock Interview", description: "Prepare with experts", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png", href: "/mentor" },
+            { label: "Career Guidance", description: "Talk to industry leaders", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorship-new.png", href: "/mentor" }
+          ]
+        },
+        {
+          title: "For Mentors",
+          items: [
+            { label: "Become a Mentor", description: "Guide the next generation", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mentorship-new.png", href: "/mentor" }
           ]
         }
       ]
@@ -89,10 +99,11 @@ const NavSidebar = ({ isExpanded }: NavSidebarProps) => {
       title: "Courses",
       sections: [
         {
-          title: "Learning",
+          title: "Explore Courses",
           items: [
-            { label: "Tech Courses", description: "Master technical skills", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png" },
-            { label: "Non-Tech Courses", description: "Master business skills", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png" }
+            { label: "Tech Courses", description: "Master technical skills", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png", href: "/courses" },
+            { label: "Non-Tech Courses", description: "Master business skills", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png", href: "/courses" },
+            { label: "Free Courses", description: "Learn at no cost", icon: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/courses-new.png", href: "/courses" }
           ]
         }
       ]
@@ -118,59 +129,68 @@ const NavSidebar = ({ isExpanded }: NavSidebarProps) => {
       onMouseLeave={handleMouseLeave}
     >
       <nav className={`
-        ${isExpanded ? 'w-[200px]' : 'w-[68px]'}
-        border-r border-slate-100 flex flex-col pt-2 pb-4 flex-shrink-0 bg-white
-        transition-all duration-300 ease-in-out h-full overflow-hidden z-50
+        ${isExpanded ? 'w-[230px]' : 'w-[72px]'}
+        border-r border-[#E2E2E2] flex flex-col pt-0 flex-shrink-0 bg-white
+        transition-all duration-200 h-full overflow-hidden z-50
       `}>
-        {/* Host Button */}
-        <div className={`flex items-center px-3 mb-8 mt-4 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
-           <div className={`
-             h-11 bg-[#0073e6] rounded-2xl flex items-center justify-center text-white cursor-pointer hover:bg-blue-700 transition-all shadow-lg shadow-blue-100/50
-             ${isExpanded ? 'w-full gap-3 px-4' : 'w-11'}
-           `}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              {isExpanded && <span className="font-black text-sm uppercase tracking-wider">Host</span>}
-           </div>
+        {/* Profile Wrapper Section */}
+        <div className="profile-wrapper sticky top-0 left-0 z-10 px-3 py-2 bg-white min-h-[64px] max-h-[64px] flex items-center border-b border-[#E2E2E2]">
+          <div className="active-profile w-full p-2.5 rounded-xl hover:bg-black/5 transition-all cursor-pointer flex items-center gap-3">
+             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
+                <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/user-color.svg" className="w-5 h-5" alt="user" />
+             </div>
+             {isExpanded && <span className="font-semibold text-[18px] text-[#383838] leading-[130%]">Talent</span>}
+          </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col gap-1.5 w-full overflow-y-auto no-scrollbar pb-10 px-3">
-          {isExpanded && (
-            <p className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2">Workspace</p>
-          )}
-          {mainNavItems.map((item) => {
-            const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
-            const isHovered = activeMenu === item.id;
+        <div className="flex flex-col gap-0.5 w-full overflow-y-auto no-scrollbar px-3 flex-grow pb-4 mt-2">
+          <div className="nav-group mb-2">
+            <ul className="sidebar-menu m-0 p-0 list-none flex flex-col gap-0.5">
+              {mainNavItems.map((item) => {
+                const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
+                const isHovered = activeMenu === item.id;
 
-            return (
-              <Link
-                key={item.id}
-                href={item.path}
-                onMouseEnter={() => handleMouseEnter(item.id)}
-                className={`
-                  h-11 rounded-2xl flex items-center transition-all duration-200 group relative
-                  ${isExpanded ? 'px-3 gap-4 w-full' : 'justify-center w-11'}
-                  ${(isActive || isHovered) ? 'bg-blue-50 text-[#0073e6]' : 'hover:bg-slate-50 text-slate-600'}
-                `}
-                title={isExpanded ? '' : item.label}
-              >
-                <div
-                  className={`w-6 h-6 flex-shrink-0 transition-transform group-hover:scale-110 ${(isActive || isHovered) ? '' : 'opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0'}`}
-                  style={{
-                    backgroundImage: `url(${iconUrl})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: item.iconPos,
-                    backgroundSize: '24px auto'
-                  }}
-                />
-                {isExpanded && <span className="font-semibold text-[14px] whitespace-nowrap">{item.label}</span>}
+                return (
+                  <li key={item.id} className="relative group">
+                    <Link
+                      href={item.path}
+                      onMouseEnter={() => handleMouseEnter(item.id)}
+                      className={`
+                        menu-item h-10 rounded-xl flex items-center transition-all duration-200 group relative
+                        ${isExpanded ? 'px-3 gap-2 w-full' : 'justify-center w-10'}
+                        ${(isActive || isHovered) ? 'bg-[#DEEDFC] text-[#002C58]' : 'hover:bg-black/5 text-[#383838]'}
+                      `}
+                      title={isExpanded ? '' : item.label}
+                    >
+                      <div
+                        className={`w-5 h-5 flex-shrink-0 transition-all ${(isActive || isHovered) ? '' : 'opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0'}`}
+                        style={{
+                          backgroundImage: `url(${iconUrl})`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: item.iconPos,
+                          backgroundSize: '20px auto'
+                        }}
+                      />
+                      {isExpanded && <span className={`text-[14px] whitespace-nowrap leading-[130%] ${isActive || isHovered ? 'font-medium' : 'font-normal'}`}>{item.label}</span>}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
 
-                {isActive && !isExpanded && (
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-[#0073e6] rounded-l-full" />
-                )}
-              </Link>
-            )
-          })}
+          <div className="nav-group">
+            {isExpanded && <div className="group-title text-[12px] font-medium text-[#727272] px-3 mb-2">Other</div>}
+            <ul className="sidebar-menu m-0 p-0 list-none flex flex-col gap-0.5">
+               <li className="relative group">
+                  <div className={`menu-item h-10 rounded-xl flex items-center transition-all duration-200 group relative ${isExpanded ? 'px-3 gap-2 w-full' : 'justify-center w-10'} hover:bg-black/5 text-[#383838] cursor-pointer`}>
+                    <img src="https://cdn.unstop.com/assets/icons/un_bag_for_business.svg" className="w-5 h-5 opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0" alt="" />
+                    {isExpanded && <span className="text-[14px] font-normal">For Business</span>}
+                  </div>
+               </li>
+            </ul>
+          </div>
         </div>
       </nav>
 

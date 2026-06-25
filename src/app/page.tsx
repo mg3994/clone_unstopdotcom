@@ -6,6 +6,8 @@ import OpportunityCard from '@/components/home/OpportunityCard';
 import Stats from '@/components/Stats';
 import PracticeSection from '@/components/PracticeSection';
 import JobsSection from '@/components/JobsSection';
+import MentorshipSection from '@/components/MentorshipSection';
+import CoursesSection from '@/components/CoursesSection';
 
 const competitions = [
   {
@@ -81,13 +83,16 @@ export default function Home() {
       </div>
 
       <section className="px-6 py-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="container-un">
           <div className="flex justify-between items-end mb-8">
-            <div>
-              <h2 className="text-2xl font-bold text-[#1c4980]">Competitions</h2>
-              <p className="text-[#8692a4] text-sm mt-1">Uncover the most talked-about competitions today.</p>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-8 bg-blue-700 rounded-full"></div>
+              <div>
+                <h2 className="text-2xl font-bold text-grey-1300">Competitions</h2>
+                <p className="text-grey-800 text-sm mt-1">Uncover the most talked-about competitions today.</p>
+              </div>
             </div>
-            <Link href="/competitions" className="text-[#007aff] font-semibold text-sm hover:underline">View All</Link>
+            <Link href="/competitions" className="text-blue-700 font-semibold text-sm hover:underline">View All</Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {competitions.map((comp, idx) => (
@@ -98,13 +103,16 @@ export default function Home() {
       </section>
 
       <section className="px-6 py-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="container-un">
           <div className="flex justify-between items-end mb-8">
-            <div>
-              <h2 className="text-2xl font-bold text-[#1c4980]">Internships</h2>
-              <p className="text-[#8692a4] text-sm mt-1">Unleash internships tailored to your aspirations.</p>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-8 bg-blue-700 rounded-full"></div>
+              <div>
+                <h2 className="text-2xl font-bold text-grey-1300">Internships</h2>
+                <p className="text-grey-800 text-sm mt-1">Unleash internships tailored to your aspirations.</p>
+              </div>
             </div>
-            <Link href="/internships" className="text-[#007aff] font-semibold text-sm hover:underline">View All</Link>
+            <Link href="/internships" className="text-blue-700 font-semibold text-sm hover:underline">View All</Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {internships.map((intern, idx) => (
@@ -115,6 +123,10 @@ export default function Home() {
       </section>
 
       <JobsSection />
+
+      <MentorshipSection />
+
+      <CoursesSection />
 
       <PracticeSection />
 

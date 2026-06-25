@@ -33,6 +33,12 @@ const courses = [
 
 export default function CoursesPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const filteredCourses = courses.filter(course =>
+    course.title.toLowerCase().includes(search.toLowerCase()) ||
+    course.organization.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="flex flex-col min-h-screen pb-20 lg:pb-0">
@@ -50,6 +56,21 @@ export default function CoursesPage() {
           <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
 
           <main className="flex-1">
+            <div className="mb-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search courses by name or category..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full h-14 bg-white border border-slate-200 rounded-2xl pl-6 pr-12 text-[15px] focus:outline-none focus:border-blue-500 font-medium shadow-sm"
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+              </div>
+            </div>
+
             <div className="flex justify-between items-center mb-8">
                <div className="flex items-center gap-3">
                   <button
@@ -63,8 +84,9 @@ export default function CoursesPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {courses.map((course, i) => (
-                <div key={i} className="bg-white border border-slate-100 rounded-[24px] overflow-hidden hover:shadow-xl transition-all group">
+              {filteredCourses.length > 0 ? (
+                filteredCourses.map((course, i) => (
+                  <div key={i} className="bg-white border border-slate-100 rounded-[24px] overflow-hidden hover:shadow-xl transition-all group">
                    <div className="aspect-video bg-slate-100 relative group-hover:scale-105 transition-transform duration-500">
                       <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                          <PlayCircle size={48} className="text-white" />
@@ -90,8 +112,14 @@ export default function CoursesPage() {
                          <button className="px-6 py-3 bg-blue-600 text-white font-black rounded-xl text-sm">Enroll Now</button>
                       </div>
                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full py-20 text-center bg-white rounded-[32px] border border-slate-100">
+                  <p className="text-xl font-black text-slate-800">No courses found matching "{search}"</p>
+                  <button onClick={() => setSearch("")} className="mt-4 text-blue-600 font-bold hover:underline">Clear search</button>
                 </div>
-              ))}
+              )}
             </div>
           </main>
         </div>

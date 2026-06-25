@@ -1,104 +1,128 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { PageHeader, FilterSidebar, OpportunityCard } from '@/components/shared/ListingComponents';
-import { Filter } from 'lucide-react';
+import React from 'react';
+import OpportunityCard from '@/components/home/OpportunityCard';
 
-const jobs = [
+const jobFilters = [
+  "All", "Full Time", "Internship", "Remote", "Engineering", "Business", "Design"
+];
+
+const allJobs = [
   {
-    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/63e1f7c3272d5_microsoft.png",
-    title: "Full Stack Developer",
-    organization: "Atlassian",
-    location: "Remote, India",
-    type: "Full-time",
-    stipend: "₹25L - ₹40L PA",
-    duration: "Permanent",
-    postedAgo: "1 day ago",
-    views: "25K",
-    category: "Engineering",
-    isHot: true
+    title: "SDE I - Backend",
+    organization: "Google",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a33409bc5d_zycus_infotech_private_limited.png",
+    location: "Bangalore",
+    link: "#",
+    prizes: "₹ 25 LPA"
   },
   {
-    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/63e1f7c3272d5_microsoft.png",
-    title: "Senior Product Designer",
-    organization: "Zomato",
-    location: "Gurgaon, India",
-    type: "In-office",
-    stipend: "₹18L - ₹30L PA",
-    duration: "Permanent",
-    postedAgo: "3 days ago",
-    views: "15K",
-    category: "Design",
-    isHot: true
+    title: "Product Manager",
+    organization: "Microsoft",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a2b97761bb8c_Unstop-Logo-Blue-Large.png",
+    location: "Hyderabad",
+    link: "#",
+    prizes: "₹ 30 LPA"
   },
   {
-    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/63e1f7c3272d5_microsoft.png",
-    title: "Marketing Manager",
-    organization: "Airtel",
-    location: "New Delhi, India",
-    type: "Hybrid",
-    stipend: "₹15L - ₹22L PA",
-    duration: "Permanent",
-    postedAgo: "1 week ago",
-    views: "9K",
-    category: "MBA",
-    isHot: false
+    title: "Frontend Lead",
+    organization: "Netflix",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a2c911e0e9_stayvista.jpg",
+    location: "Remote",
+    link: "#",
+    prizes: "₹ 40 LPA"
+  },
+  {
+    title: "UX Designer",
+    organization: "Adobe",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a395591f3d3a_01.jpeg",
+    location: "Noida",
+    link: "#",
+    prizes: "₹ 18 LPA"
+  },
+  {
+    title: "Data Scientist",
+    organization: "Meta",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a3a33409bc5d_zycus_infotech_private_limited.png",
+    location: "Mumbai",
+    link: "#",
+    prizes: "₹ 35 LPA"
+  },
+  {
+    title: "Marketing Lead",
+    organization: "Amazon",
+    logo: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a2b97761bb8c_Unstop-Logo-Blue-Large.png",
+    location: "Bangalore",
+    link: "#",
+    prizes: "₹ 22 LPA"
   }
 ];
 
 export default function JobsPage() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [search, setSearch] = React.useState("");
+  const filteredJobs = allJobs.filter(job =>
+    job.title.toLowerCase().includes(search.toLowerCase()) ||
+    job.organization.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <div className="flex flex-col min-h-screen pb-20 lg:pb-0">
-      <PageHeader
-        title="Jobs"
-        description="Explore full-time career opportunities at top-tier companies."
-        stats={[
-          { label: "Open Vacancies", value: "12,000+" },
-          { label: "Verified Recruiters", value: "2,500+" }
-        ]}
-      />
-
-      <div className="max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6 lg:py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
-
-          <main className="flex-1">
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-3">
-                 <button
-                   onClick={() => setIsFilterOpen(true)}
-                   className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 shadow-sm"
-                 >
-                    <Filter size={18} />
-                    Filters
-                 </button>
-                 <h2 className="text-lg lg:text-xl font-black text-slate-800">12,431 Jobs</h2>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="hidden sm:inline text-sm text-slate-500 font-bold">Sort by:</span>
-                <select className="bg-transparent text-sm font-black text-blue-600 focus:outline-none">
-                  <option>Recent</option>
-                  <option>Salary: High to Low</option>
-                </select>
-              </div>
+    <div className="pb-20">
+      <section className="bg-[#f8faff] py-12 px-6">
+        <div className="container-un">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+              <h1 className="text-3xl font-black text-grey-1300 mb-2">Explore Jobs & Internships</h1>
+              <p className="text-grey-800 font-medium">Find the perfect role to kickstart or advance your career.</p>
             </div>
-
-            <div className="grid grid-cols-1 gap-4 lg:gap-5">
-              {jobs.map((job, index) => (
-                <OpportunityCard key={index} {...job} />
-              ))}
+            <div className="flex bg-white p-2 rounded-full border border-grey-200 w-full md:w-auto shadow-sm focus-within:border-blue-700 transition-colors">
+              <input
+                type="text"
+                placeholder="Search jobs, companies..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="px-6 py-2 outline-none flex-grow bg-transparent font-medium"
+              />
+              <button className="bg-blue-700 text-white px-8 py-2 rounded-full font-bold">Search</button>
             </div>
+          </div>
 
-            <div className="mt-10 flex justify-center">
-              <button className="w-full sm:w-auto px-10 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-2xl font-black hover:bg-blue-50 transition-colors">
-                Explore More Jobs
+          <div className="flex gap-4 mt-10 overflow-x-auto pb-4 no-scrollbar">
+            {jobFilters.map((filter, idx) => (
+              <button
+                key={idx}
+                className={`px-6 py-2 rounded-full font-bold text-sm whitespace-nowrap transition-all border ${
+                  idx === 0 ? 'bg-blue-700 text-white border-blue-700' : 'bg-white text-grey-800 border-grey-200 hover:border-blue-700'
+                }`}
+              >
+                {filter}
               </button>
-            </div>
-          </main>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-12 px-6">
+        <div className="container-un">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map((job, idx) => (
+                <OpportunityCard key={idx} {...job} />
+              ))
+            ) : (
+              <div className="col-span-full py-20 text-center">
+                <p className="text-xl font-bold text-grey-1300">No jobs found matching "{search}"</p>
+                <button onClick={() => setSearch("")} className="mt-4 text-blue-700 font-bold underline">Clear search</button>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-16 text-center">
+            <button className="border-2 border-blue-700 text-blue-700 px-12 py-3 rounded-full font-black hover:bg-blue-50 transition-all">
+              Load More Jobs
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

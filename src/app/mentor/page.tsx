@@ -44,6 +44,14 @@ const mentors = [
 ];
 
 export default function MentorPage() {
+  const [search, setSearch] = React.useState("");
+
+  const filteredMentors = mentors.filter(mentor =>
+    mentor.name.toLowerCase().includes(search.toLowerCase()) ||
+    mentor.role.toLowerCase().includes(search.toLowerCase()) ||
+    mentor.skills.some(skill => skill.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <div className="flex flex-col min-h-screen bg-[#F0F5F9]">
       <PageHeader
@@ -62,7 +70,9 @@ export default function MentorPage() {
               <input
                 type="text"
                 placeholder="Search mentors by name, company or skills..."
-                className="w-full h-14 bg-white border border-slate-200 rounded-2xl pl-12 pr-4 text-[15px] focus:outline-none focus:border-blue-500 font-medium"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full h-14 bg-white border border-slate-200 rounded-2xl pl-12 pr-4 text-[15px] focus:outline-none focus:border-blue-500 font-medium shadow-sm"
               />
            </div>
            <button className="h-14 px-8 bg-white border border-slate-200 rounded-2xl flex items-center gap-2 font-bold text-slate-700 hover:bg-slate-50 transition-colors">
@@ -72,8 +82,9 @@ export default function MentorPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mentors.map((mentor, i) => (
-            <div key={i} className="bg-white rounded-3xl border border-slate-100 p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all group">
+          {filteredMentors.length > 0 ? (
+            filteredMentors.map((mentor, i) => (
+              <div key={i} className="bg-white rounded-3xl border border-slate-100 p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all group">
                <div className="relative mb-6">
                   <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-50">
                     <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover" />
@@ -113,8 +124,14 @@ export default function MentorPage() {
                <button className="w-full py-4 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all text-[14px]">
                   Book 1:1 Session
                </button>
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center bg-white rounded-3xl border border-slate-100">
+               <p className="text-xl font-black text-slate-800">No mentors found matching "{search}"</p>
+               <button onClick={() => setSearch("")} className="mt-4 text-blue-600 font-bold hover:underline">Clear search</button>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

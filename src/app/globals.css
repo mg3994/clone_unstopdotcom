@@ -1,21 +1,92 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary-50: #F6F8FA;
+  --color-primary-100: #E1E9F1;
+  --color-primary-200: #C2D0E3;
+  --color-primary-300: #9DB6D3;
+  --color-primary-400: #789AC3;
+  --color-primary-500: #547FB2;
+  --color-primary-600: #33639E;
   --color-primary-700: #1C4980;
-  --color-blue-700: #0073E6;
-  --color-blue-600: #0066ff;
-  --color-blue-100: #DEEDFC;
+  --color-primary-800: #163A66;
+  --color-primary-900: #112C4D;
+  --color-primary-1000: #0E233E;
+  --color-primary-1100: #0B1C32;
+  --color-primary-1200: #0A192D;
+  --color-primary-1250: #071323;
+
   --color-blue-50: #F2F8FE;
-  --color-grey-1100: #383838;
-  --color-grey-800: #727272;
+  --color-blue-100: #DEEDFC;
+  --color-blue-200: #BFDCF9;
+  --color-blue-300: #99C7F5;
+  --color-blue-400: #73B2F1;
+  --color-blue-500: #4D9DEE;
+  --color-blue-600: #2688EA;
+  --color-blue-700: #0073E6;
+  --color-blue-800: #005CB8;
+  --color-blue-900: #00458A;
+  --color-blue-1000: #00376E;
+  --color-blue-1100: #002C58;
+  --color-blue-1200: #00264D;
+  --color-blue-1250: #001A34;
+
+  --color-grey-00: #FFFFFF;
+  --color-grey-50: #F6F6F6;
+  --color-grey-100: #EDEDED;
   --color-grey-200: #E2E2E2;
+  --color-grey-300: #CDCDCD;
+  --color-grey-400: #B9B9B9;
+  --color-grey-500: #AFAFAF;
+  --color-grey-600: #999999;
+  --color-grey-700: #838383;
+  --color-grey-800: #727272;
+  --color-grey-900: #5D5D5D;
+  --color-grey-1000: #4B4B4B;
+  --color-grey-1100: #383838;
+  --color-grey-1200: #252525;
+  --color-grey-1250: #1C1C1C;
+  --color-grey-1300: #121212;
+
+  --color-green-50: #F3FBF6;
+  --color-green-100: #DEF7EB;
+  --color-green-200: #C3F0DA;
+  --color-green-300: #9BE6C1;
+  --color-green-400: #76DDAA;
+  --color-green-500: #50D493;
+  --color-green-600: #2ACA7C;
+  --color-green-700: #05C165;
+  --color-green-800: #049A51;
+  --color-green-900: #03743D;
+
+  --color-red-50: #FEF9F9;
+  --color-red-100: #FDEBE5;
+  --color-red-200: #FAD3C6;
+  --color-red-700: #D63500;
+  --color-red-900: #802000;
+
   --color-workspace: #e5effa;
 }
 
 @layer base {
+  :root {
+    --grey-00: #FFFFFF;
+    --grey-50: #F6F6F6;
+    --grey-100: #EDEDED;
+    --grey-200: #E2E2E2;
+    --grey-500: #AFAFAF;
+    --grey-800: #727272;
+    --grey-1100: #383838;
+    --blue-100: #DEEDFC;
+    --blue-400: #73B2F1;
+    --blue-700: #0073E6;
+    --primary-700: #1C4980;
+    --stroke-primary: var(--grey-200);
+  }
+
   body {
-    background-color: #e5effa;
-    color: #383838;
+    background-color: var(--workspace);
+    color: var(--grey-1100);
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
@@ -23,10 +94,81 @@
   }
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Squircle Radius Simulation */
+  .rounded-squircle-12 {
+    border-radius: 12px;
+  }
+  @supports (corner-shape: squircle) {
+    .rounded-squircle-12 {
+      border-radius: 12px;
+      corner-shape: squircle;
+    }
+  }
+
+  .rounded-squircle-16 {
+    border-radius: 16px;
+  }
+  @supports (corner-shape: squircle) {
+    .rounded-squircle-16 {
+      border-radius: 32px;
+      corner-shape: squircle;
+    }
+  }
+
+  .rounded-squircle-24 {
+    border-radius: 24px;
+  }
+  @supports (corner-shape: squircle) {
+    .rounded-squircle-24 {
+      border-radius: 24px;
+      corner-shape: squircle;
+    }
+  }
+
+  /* Primary Sidebar Active Cut-out */
+  .primary-active-icon {
+    position: relative;
+    background-color: var(--grey-00) !important;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  @supports (corner-shape: squircle) {
+    .primary-active-icon {
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      corner-shape: squircle;
+    }
+  }
+
+  .primary-active-icon::before,
+  .primary-active-icon::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    right: 0;
+    background: transparent;
+    transition: opacity 0.2s;
+  }
+
+  .primary-active-icon::before {
+    top: -8px;
+    border-radius: 0 0 99px;
+    box-shadow: 3px 3px 0 2px var(--grey-00);
+  }
+
+  .primary-active-icon::after {
+    bottom: -8px;
+    border-radius: 0 99px 0 0;
+    box-shadow: 3px -3px 0 2px var(--grey-00);
+  }
 }

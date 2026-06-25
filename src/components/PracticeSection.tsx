@@ -5,41 +5,49 @@ interface PracticeItem {
   title: string;
   subtitle?: string;
   img?: string;
+  color: string;
 }
 
 const practiceData: PracticeItem[] = [
   {
     title: "100 Days of Code",
-    subtitle: "Coding Sprint",
-    img: "https://cdn.unstop.com/assets/practice/100-days-of-code.svg"
+    subtitle: "Solve 100 problems in 100 days to win big!",
+    img: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/100-days-to-code-new.png",
+    color: "bg-[#F4F1FE]"
   },
   {
     title: "Mock Test",
-    subtitle: "Skill Based Mock Assessments",
-    img: "https://cdn.unstop.com/assets/practice/mock-test.svg"
+    subtitle: "Skill Based Mock Assessments to ace your prep.",
+    img: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-tests-new.png",
+    color: "bg-[#FFF9E5]"
   },
   {
     title: "Company Preparation",
-    subtitle: "Crack Your Dream Company",
-    img: "https://cdn.unstop.com/assets/practice/company-prep.svg"
+    subtitle: "Prepare for your dream company with our curation.",
+    img: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/mock-interviews-new.png",
+    color: "bg-[#E5F3FF]"
   },
   {
-    title: "Project",
-    subtitle: "Machine Learning Projects",
-    img: "https://cdn.unstop.com/assets/practice/project.svg"
+    title: "Coding Practice",
+    subtitle: "Solve coding problems of different difficulty levels.",
+    img: "https://d8it4huxumps7.cloudfront.net/uploads/images/avif/100-days-to-code-new.png",
+    color: "bg-[#E6F9F0]"
   }
 ];
 
 const PracticeSection = () => {
   return (
     <section className="py-10 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="container-un">
         <div className="flex justify-between items-end mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-[#1c4980]">Practice</h2>
-            <p className="text-[#8692a4] text-sm mt-1">Solve quality problems and crack your dream company.</p>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-8 bg-blue-700 rounded-full"></div>
+            <div>
+              <h2 className="text-2xl font-bold text-grey-1300">Practice</h2>
+              <p className="text-grey-800 text-sm mt-1">Solve quality problems and crack your dream company.</p>
+            </div>
           </div>
-          <Link href="/practice" className="text-[#007aff] font-semibold text-sm hover:underline">
+          <Link href="/practice" className="text-blue-700 font-semibold text-sm hover:underline">
             View All
           </Link>
         </div>
@@ -48,13 +56,22 @@ const PracticeSection = () => {
           {practiceData.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-[20px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center text-center group"
+              className="bg-white rounded-[24px] border border-grey-200 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col group overflow-hidden"
             >
-              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-[#f0f6ff] rounded-2xl group-hover:scale-110 transition-transform">
-                <img src={item.img} alt={item.title} className="w-10 h-10 object-contain" />
+              <div className={`h-[140px] ${item.color} flex items-center justify-center relative px-8`}>
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="h-24 w-auto object-contain z-10 group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 opacity-10 pointer-events-none">
+                   <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/69450295983d9_home_page_card_bg_element.svg" className="w-full h-full object-cover" alt="" />
+                </div>
               </div>
-              <h3 className="font-bold text-[#1c4980] mb-1">{item.title}</h3>
-              <p className="text-xs text-[#8692a4] leading-relaxed">{item.subtitle}</p>
+              <div className="p-5 flex-grow">
+                <h3 className="font-bold text-grey-1300 text-lg mb-2">{item.title}</h3>
+                <p className="text-xs text-grey-800 leading-relaxed line-clamp-2">{item.subtitle}</p>
+              </div>
             </div>
           ))}
         </div>
