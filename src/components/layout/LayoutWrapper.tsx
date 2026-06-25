@@ -16,12 +16,12 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#e5effa] main-wrapper-container">
-      {/* Primary Sidebar (Fixed Left) */}
-      <div className="hidden lg:block h-full flex-shrink-0">
+      {/* Primary Sidebar (Fixed Left Rail) */}
+      <div className="hidden lg:block h-full flex-shrink-0 relative z-[1001]">
         <PersonaSidebar />
       </div>
 
-      {/* Right Content Area */}
+      {/* Navigation & Content Area */}
       <main className="flex-grow max-h-full overflow-hidden w-full">
         <div className="main-content-container relative flex flex-col h-screen overflow-hidden">
           {/* Main Header */}

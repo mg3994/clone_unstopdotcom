@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Inter", sans-serif;
   --color-primary-50: #F6F8FA;
   --color-primary-100: #E1E9F1;
   --color-primary-200: #C2D0E3;
@@ -16,6 +17,18 @@
   --color-primary-1200: #0A192D;
   --color-primary-1250: #071323;
 
+  --color-secondary-50: #FFFBEF;
+  --color-secondary-100: #FFF8DE;
+  --color-secondary-200: #FFF1BF;
+  --color-secondary-300: #FFEBA0;
+  --color-secondary-400: #FFE589;
+  --color-secondary-500: #FFDD66;
+  --color-secondary-600: #FFD233;
+  --color-secondary-700: #FFC700;
+  --color-secondary-800: #D4A500;
+  --color-secondary-900: #997700;
+  --color-secondary-1000: #675000;
+
   --color-blue-50: #F2F8FE;
   --color-blue-100: #DEEDFC;
   --color-blue-200: #BFDCF9;
@@ -30,6 +43,36 @@
   --color-blue-1100: #002C58;
   --color-blue-1200: #00264D;
   --color-blue-1250: #001A34;
+
+  --color-green-50: #F3FBF6;
+  --color-green-100: #DEF7EB;
+  --color-green-200: #C3F0DA;
+  --color-green-300: #9BE6C1;
+  --color-green-400: #76DDAA;
+  --color-green-500: #50D493;
+  --color-green-600: #2ACA7C;
+  --color-green-700: #05C165;
+  --color-green-800: #049A51;
+  --color-green-900: #03743D;
+  --color-green-1000: #02532C;
+  --color-green-1100: #054023;
+  --color-green-1200: #08321D;
+  --color-green-1250: #052214;
+
+  --color-red-50: #FEF9F9;
+  --color-red-100: #FDEBE5;
+  --color-red-200: #FAD3C6;
+  --color-red-300: #F2B7A4;
+  --color-red-400: #E89073;
+  --color-red-500: #E2724D;
+  --color-red-600: #DC5326;
+  --color-red-700: #D63500;
+  --color-red-800: #AB2A00;
+  --color-red-900: #802000;
+  --color-red-1000: #681A00;
+  --color-red-1100: #531500;
+  --color-red-1200: #481200;
+  --color-red-1250: #2B0B00;
 
   --color-grey-00: #FFFFFF;
   --color-grey-50: #F6F6F6;
@@ -48,127 +91,136 @@
   --color-grey-1250: #1C1C1C;
   --color-grey-1300: #121212;
 
-  --color-green-50: #F3FBF6;
-  --color-green-100: #DEF7EB;
-  --color-green-200: #C3F0DA;
-  --color-green-300: #9BE6C1;
-  --color-green-400: #76DDAA;
-  --color-green-500: #50D493;
-  --color-green-600: #2ACA7C;
-  --color-green-700: #05C165;
-  --color-green-800: #049A51;
-  --color-green-900: #03743D;
-
-  --color-red-50: #FEF9F9;
-  --color-red-100: #FDEBE5;
-  --color-red-200: #FAD3C6;
-  --color-red-700: #D63500;
-  --color-red-900: #802000;
-
-  --color-workspace: #e5effa;
+  --color-unstop-bg: #e5effa;
+  --color-sidebar-primary-bg: #eff2f6;
 }
 
-@layer base {
-  :root {
-    --grey-00: #FFFFFF;
-    --grey-50: #F6F6F6;
-    --grey-100: #EDEDED;
-    --grey-200: #E2E2E2;
-    --grey-500: #AFAFAF;
-    --grey-800: #727272;
-    --grey-1100: #383838;
-    --blue-100: #DEEDFC;
-    --blue-400: #73B2F1;
-    --blue-700: #0073E6;
-    --primary-700: #1C4980;
-    --stroke-primary: var(--grey-200);
-  }
+:root {
+  --cut-size: 8px;
+  --cut-shadow: var(--color-grey-00);
+}
 
-  body {
-    background-color: var(--workspace);
-    color: var(--grey-1100);
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-  }
+body {
+  color: var(--color-grey-1100);
+  background-color: var(--color-grey-00);
+  font-family: "Inter", sans-serif !important;
 }
 
 @layer components {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Squircle Radius Simulation */
-  .rounded-squircle-12 {
-    border-radius: 12px;
-  }
-  @supports (corner-shape: squircle) {
-    .rounded-squircle-12 {
-      border-radius: 12px;
-      corner-shape: squircle;
-    }
-  }
-
-  .rounded-squircle-16 {
-    border-radius: 16px;
-  }
-  @supports (corner-shape: squircle) {
-    .rounded-squircle-16 {
-      border-radius: 32px;
-      corner-shape: squircle;
-    }
-  }
-
-  .rounded-squircle-24 {
-    border-radius: 24px;
-  }
-  @supports (corner-shape: squircle) {
-    .rounded-squircle-24 {
-      border-radius: 24px;
-      corner-shape: squircle;
-    }
-  }
-
-  /* Primary Sidebar Active Cut-out */
-  .primary-active-icon {
+  /* High Fidelity Dual Sidebar Architecture */
+  .primary-container {
+    container-name: sidebar;
+    container-type: inline-size;
     position: relative;
-    background-color: var(--grey-00) !important;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 72px;
+    transition: .2s;
+    flex-shrink: 0;
+  }
+
+  .img-wrapper {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    position: relative;
+    padding-left: 10px;
+  }
+
+  .img-wrapper.active {
+    background-color: var(--color-grey-00);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
+
   @supports (corner-shape: squircle) {
-    .primary-active-icon {
+    .img-wrapper.active {
       border-top-left-radius: 24px;
       border-bottom-left-radius: 24px;
       corner-shape: squircle;
     }
   }
 
-  .primary-active-icon::before,
-  .primary-active-icon::after {
+  /* Concave Cut-out for Active Item */
+  .img-wrapper.active::before,
+  .img-wrapper.active::after {
     content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: var(--cut-size);
+    height: var(--cut-size);
     right: 0;
     background: transparent;
     transition: opacity 0.2s;
+    z-index: 10;
   }
 
-  .primary-active-icon::before {
-    top: -8px;
-    border-radius: 0 0 99px;
-    box-shadow: 3px 3px 0 2px var(--grey-00);
+  .img-wrapper.active::before {
+    top: calc(var(--cut-size) * -1);
+    border-radius: 0 0 99px 0;
+    box-shadow: 3px 3px 0 2px var(--color-grey-00);
   }
 
-  .primary-active-icon::after {
-    bottom: -8px;
+  .img-wrapper.active::after {
+    bottom: calc(var(--cut-size) * -1);
     border-radius: 0 99px 0 0;
-    box-shadow: 3px -3px 0 2px var(--grey-00);
+    box-shadow: 3px -3px 0 2px var(--color-grey-00);
   }
+
+  .un-squircle {
+    border-radius: 16px;
+  }
+  @supports (corner-shape: squircle) {
+    .un-squircle {
+      border-radius: 32px;
+      corner-shape: squircle;
+    }
+  }
+
+  .un-container {
+    width: auto;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .container-un {
+    width: auto;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sidebar Icons from Sprite */
+.m_icons {
+  height: 24px;
+  width: 24px;
+  background: url(https://d8it4huxumps7.cloudfront.net/uploads/images/66fe39b03a78d_mobile_menu_spirit_icons.svg) no-repeat;
+  background-size: 24px auto;
+}
+.icon-unstop { background-position: 0 0; }
+.icon-internships { background-position: 0 -34px; }
+.icon-jobs { background-position: 0 -68px; }
+.icon-compete { background-position: 0 -102px; }
+.icon-mentorship { background-position: 0 -136px; }
+.icon-more { background-position: 0 -170px; }
+
+/* Main layout containers */
+.main-wrapper-container {
+  display: flex;
+  overflow: hidden;
+  max-height: 100dvh;
+  background: #e5effa;
 }

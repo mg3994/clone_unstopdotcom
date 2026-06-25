@@ -1,0 +1,603 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: tests/final_sidebar_verify.spec.ts >> capture sidebar screenshots
+- Location: tests/final_sidebar_verify.spec.ts:3:5
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: page.goto: Test timeout of 30000ms exceeded.
+Call log:
+  - navigating to "http://localhost:3000/", waiting until "load"
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - button "Talent Talent" [ref=e7]:
+        - img "Talent" [ref=e9]
+        - text: Talent
+      - button "Mentor Mentor" [ref=e11]:
+        - img "Mentor" [ref=e13]
+        - text: Mentor
+      - button "Recruiter Recruiter" [ref=e15]:
+        - img "Recruiter" [ref=e17]
+        - text: Recruiter
+    - generic [ref=e18]:
+      - button "3" [ref=e19]:
+        - img [ref=e20]
+        - text: "3"
+      - button [ref=e23]:
+        - img [ref=e24]
+      - generic [ref=e26]:
+        - img "User"
+  - main [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e30]:
+        - button "Toggle Sidebar" [ref=e32]:
+          - img "Toggle" [ref=e33]
+        - generic [ref=e34]:
+          - link "Unstop" [ref=e36] [cursor=pointer]:
+            - /url: /
+            - img "Unstop" [ref=e37]
+          - generic [ref=e38]:
+            - img [ref=e40]
+            - textbox "Search Opportunities" [ref=e43]
+          - generic [ref=e45]:
+            - button "For Business" [ref=e46]
+            - link "Login" [ref=e47] [cursor=pointer]:
+              - /url: /auth/login
+      - generic [ref=e48]:
+        - navigation [ref=e51]:
+          - img "user" [ref=e55]
+          - generic [ref=e56]:
+            - list [ref=e58]:
+              - listitem:
+                - link "Home":
+                  - /url: /
+              - listitem:
+                - link "Practice":
+                  - /url: /practice
+              - listitem:
+                - link "Internships":
+                  - /url: /internships
+              - listitem:
+                - link "Jobs":
+                  - /url: /jobs
+              - listitem:
+                - link "Competitions":
+                  - /url: /competitions
+              - listitem:
+                - link "Mentorship":
+                  - /url: /mentor
+              - listitem:
+                - link "Events":
+                  - /url: /events
+              - listitem:
+                - link "Courses":
+                  - /url: /courses
+            - list [ref=e60]:
+              - listitem [ref=e61]
+        - generic [ref=e63]:
+          - generic [ref=e65]:
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - heading "Unlock Your Career!" [level=1] [ref=e69]:
+                  - text: Unlock Your
+                  - generic [ref=e70]: Career!
+                - generic [ref=e72]:
+                  - text: Access to
+                  - strong [ref=e73]: 850M+
+                  - text: profiles
+              - generic [ref=e74]:
+                - link "Internships Internships" [ref=e75] [cursor=pointer]:
+                  - /url: /internships
+                  - generic [ref=e76]: Internships
+                  - img "Internships" [ref=e78]
+                - link "Jobs Jobs" [ref=e80] [cursor=pointer]:
+                  - /url: /jobs
+                  - generic [ref=e81]: Jobs
+                  - img "Jobs" [ref=e83]
+                - link "Competitions Competitions" [ref=e85] [cursor=pointer]:
+                  - /url: /competitions
+                  - generic [ref=e86]: Competitions
+                  - img "Competitions" [ref=e88]
+                - link "Mock TestsAI Mock Tests" [ref=e90] [cursor=pointer]:
+                  - /url: /practice/mock-test
+                  - generic [ref=e91]:
+                    - text: Mock Tests
+                    - img "AI" [ref=e92]
+                  - img "Mock Tests" [ref=e94]
+                - link "Mock Interviews Mock Interviews" [ref=e96] [cursor=pointer]:
+                  - /url: /practice/mock-interview
+                  - generic [ref=e97]: Mock Interviews
+                  - img "Mock Interviews" [ref=e99]
+                - link "Mentorships Mentorships" [ref=e101] [cursor=pointer]:
+                  - /url: /mentor
+                  - generic [ref=e102]: Mentorships
+                  - img "Mentorships" [ref=e104]
+                - link "CoursesAI Courses" [ref=e106] [cursor=pointer]:
+                  - /url: /courses
+                  - generic [ref=e107]:
+                    - text: Courses
+                    - img "AI" [ref=e108]
+                  - img "Courses" [ref=e110]
+                - link "100 Days to Code 100 Days to Code" [ref=e112] [cursor=pointer]:
+                  - /url: /practice/100-days-of-code
+                  - generic [ref=e113]: 100 Days to Code
+                  - img "100 Days to Code" [ref=e115]
+            - generic [ref=e119]:
+              - generic [ref=e120]:
+                - heading "Featured" [level=2] [ref=e122]
+                - generic [ref=e123]:
+                  - button [ref=e124]:
+                    - img [ref=e125]
+                  - button [ref=e127]:
+                    - img [ref=e128]
+              - generic [ref=e131]:
+                - generic [ref=e133]:
+                  - img "Unstop CLUBVERSE 2026" [ref=e135]
+                  - generic [ref=e136]:
+                    - generic [ref=e137]: OnlineFree
+                    - heading "Unstop CLUBVERSE 2026" [level=3] [ref=e138]
+                - generic [ref=e140]:
+                  - img "Make your resume cooler than the rest with mentors this summer!" [ref=e142]
+                  - generic [ref=e143]:
+                    - generic [ref=e144]: Get your CV reviewed!
+                    - heading "Make your resume cooler than the rest with mentors this summer!" [level=3] [ref=e145]
+                - generic [ref=e147]:
+                  - img "India's Biggest Creators' League" [ref=e149]
+                  - generic [ref=e150]:
+                    - generic [ref=e151]: OnlineFree
+                    - heading "India's Biggest Creators' League" [level=3] [ref=e152]
+                - generic [ref=e154]:
+                  - img "LIT School Careers of the Future Summit" [ref=e156]
+                  - generic [ref=e157]:
+                    - generic [ref=e158]: Register Now
+                    - heading "LIT School Careers of the Future Summit" [level=3] [ref=e159]
+                - generic [ref=e161]:
+                  - img "Samsung Galaxy AI Treasure Hunt 2026" [ref=e163]
+                  - generic [ref=e164]:
+                    - generic [ref=e165]: Register Now
+                    - heading "Samsung Galaxy AI Treasure Hunt 2026" [level=3] [ref=e166]
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e171]:
+                  - heading "Competitions" [level=2] [ref=e172]
+                  - paragraph [ref=e173]: Uncover the most talked-about competitions today.
+                - link "View All" [ref=e174] [cursor=pointer]:
+                  - /url: /competitions
+              - generic [ref=e175]:
+                - link "Online Dr. B. R. Ambedkar School of Specialised Excellence Battle of Bands Dr. B. R. Ambedkar School of Specialised Excellence" [ref=e176] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e177]:
+                    - generic [ref=e179]: Online
+                    - img "Dr. B. R. Ambedkar School of Specialised Excellence" [ref=e181]
+                  - generic [ref=e182]:
+                    - heading "Battle of Bands" [level=3] [ref=e183]
+                    - paragraph [ref=e184]: Dr. B. R. Ambedkar School of Specialised Excellence
+                - link "Online Unstop Unstop CLUBVERSE 2026 Unstop" [ref=e185] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e186]:
+                    - generic [ref=e188]: Online
+                    - img "Unstop" [ref=e190]
+                  - generic [ref=e191]:
+                    - heading "Unstop CLUBVERSE 2026" [level=3] [ref=e192]
+                    - paragraph [ref=e193]: Unstop
+                - link "prizePrizes worth ₹ 52,000 Online IIMT University IIMTU Stoxra National Trading Championship 2026 IIMT University IIMTU" [ref=e194] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e195]:
+                    - generic [ref=e196]:
+                      - generic [ref=e197]:
+                        - img "prize" [ref=e198]
+                        - generic [ref=e199]: Prizes worth ₹ 52,000
+                      - generic [ref=e200]: Online
+                    - img "IIMT University IIMTU" [ref=e202]
+                  - generic [ref=e203]:
+                    - heading "Stoxra National Trading Championship 2026" [level=3] [ref=e204]
+                    - paragraph [ref=e205]: IIMT University IIMTU
+                - link "prizePrizes worth ₹ 57,000 Online IIMT University IIMTU Stoxra Creators' League 2026 IIMT University IIMTU" [ref=e206] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e207]:
+                    - generic [ref=e208]:
+                      - generic [ref=e209]:
+                        - img "prize" [ref=e210]
+                        - generic [ref=e211]: Prizes worth ₹ 57,000
+                      - generic [ref=e212]: Online
+                    - img "IIMT University IIMTU" [ref=e214]
+                  - generic [ref=e215]:
+                    - heading "Stoxra Creators' League 2026" [level=3] [ref=e216]
+                    - paragraph [ref=e217]: IIMT University IIMTU
+            - generic [ref=e219]:
+              - generic [ref=e220]:
+                - generic [ref=e222]:
+                  - heading "Internships" [level=2] [ref=e223]
+                  - paragraph [ref=e224]: Unleash internships tailored to your aspirations.
+                - link "View All" [ref=e225] [cursor=pointer]:
+                  - /url: /internships
+              - generic [ref=e226]:
+                - link "Hybrid | Mumbai, Bangalore Zycus Infotech Private Limited Management Trainee - Talent Acquisition Zycus Infotech Private Limited" [ref=e227] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e228]:
+                    - generic [ref=e230]: Hybrid | Mumbai, Bangalore
+                    - img "Zycus Infotech Private Limited" [ref=e232]
+                  - generic [ref=e233]:
+                    - heading "Management Trainee - Talent Acquisition" [level=3] [ref=e234]
+                    - paragraph [ref=e235]: Zycus Infotech Private Limited
+                - link "In Office | Mumbai Kraftpixel Digital Solutions Business Development Internship Kraftpixel Digital Solutions" [ref=e236] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e237]:
+                    - generic [ref=e239]: In Office | Mumbai
+                    - img "Kraftpixel Digital Solutions" [ref=e241]
+                  - generic [ref=e242]:
+                    - heading "Business Development Internship" [level=3] [ref=e243]
+                    - paragraph [ref=e244]: Kraftpixel Digital Solutions
+                - link "In Office | North Goa StayVista Acquisition Internship StayVista" [ref=e245] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e246]:
+                    - generic [ref=e248]: In Office | North Goa
+                    - img "StayVista" [ref=e250]
+                  - generic [ref=e251]:
+                    - heading "Acquisition Internship" [level=3] [ref=e252]
+                    - paragraph [ref=e253]: StayVista
+                - link "Hybrid | Mumbai Zycus Infotech Private Limited AI Internship Zycus Infotech Private Limited" [ref=e254] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e255]:
+                    - generic [ref=e257]: Hybrid | Mumbai
+                    - img "Zycus Infotech Private Limited" [ref=e259]
+                  - generic [ref=e260]:
+                    - heading "AI Internship" [level=3] [ref=e261]
+                    - paragraph [ref=e262]: Zycus Infotech Private Limited
+            - generic [ref=e264]:
+              - generic [ref=e265]:
+                - generic [ref=e267]:
+                  - heading "Jobs" [level=2] [ref=e268]
+                  - paragraph [ref=e269]: Unveil jobs designed for your next big move.
+                - link "View All" [ref=e270] [cursor=pointer]:
+                  - /url: /jobs
+              - generic [ref=e271]:
+                - link "In Office | Bangalore Atlassian SDE - 1 (Backend Engineer Intern) Atlassian" [ref=e272] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e273]:
+                    - generic [ref=e275]: In Office | Bangalore
+                    - img "Atlassian" [ref=e277]
+                  - generic [ref=e278]:
+                    - heading "SDE - 1 (Backend Engineer Intern)" [level=3] [ref=e279]
+                    - paragraph [ref=e280]: Atlassian
+                - link "Hybrid | Noida Paytm Full Stack Developer Paytm" [ref=e281] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e282]:
+                    - generic [ref=e284]: Hybrid | Noida
+                    - img "Paytm" [ref=e286]
+                  - generic [ref=e287]:
+                    - heading "Full Stack Developer" [level=3] [ref=e288]
+                    - paragraph [ref=e289]: Paytm
+                - link "Remote Razorpay Product Designer Razorpay" [ref=e290] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e291]:
+                    - generic [ref=e293]: Remote
+                    - img "Razorpay" [ref=e295]
+                  - generic [ref=e296]:
+                    - heading "Product Designer" [level=3] [ref=e297]
+                    - paragraph [ref=e298]: Razorpay
+                - link "In Office | Bangalore Flipkart Machine Learning Engineer Flipkart" [ref=e299] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e300]:
+                    - generic [ref=e302]: In Office | Bangalore
+                    - img "Flipkart" [ref=e304]
+                  - generic [ref=e305]:
+                    - heading "Machine Learning Engineer" [level=3] [ref=e306]
+                    - paragraph [ref=e307]: Flipkart
+            - generic [ref=e309]:
+              - generic [ref=e310]:
+                - generic [ref=e312]:
+                  - heading "Mentorship" [level=2] [ref=e313]
+                  - paragraph [ref=e314]: Guided by the best to make you the best.
+                - link "View All" [ref=e315] [cursor=pointer]:
+                  - /url: /mentor
+              - generic [ref=e316]:
+                - generic [ref=e317]:
+                  - generic [ref=e318]:
+                    - img "Ankit Sharma" [ref=e320]
+                    - generic [ref=e321]:
+                      - heading "Ankit Sharma" [level=3] [ref=e322]
+                      - paragraph [ref=e323]: Google
+                  - paragraph [ref=e324]: SDE Mentor - Top Product Companies
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: ⭐ 4.9
+                    - generic [ref=e327]: (120+ Reviews)
+                - generic [ref=e328]:
+                  - generic [ref=e329]:
+                    - img "Sneha Reddy" [ref=e331]
+                    - generic [ref=e332]:
+                      - heading "Sneha Reddy" [level=3] [ref=e333]
+                      - paragraph [ref=e334]: Microsoft
+                  - paragraph [ref=e335]: Product Management Guide
+                  - generic [ref=e336]:
+                    - generic [ref=e337]: ⭐ 5.0
+                    - generic [ref=e338]: (85+ Reviews)
+                - generic [ref=e339]:
+                  - generic [ref=e340]:
+                    - img "Rahul Verma" [ref=e342]
+                    - generic [ref=e343]:
+                      - heading "Rahul Verma" [level=3] [ref=e344]
+                      - paragraph [ref=e345]: McKinsey
+                  - paragraph [ref=e346]: Consulting Expert
+                  - generic [ref=e347]:
+                    - generic [ref=e348]: ⭐ 4.8
+                    - generic [ref=e349]: (200+ Reviews)
+            - generic [ref=e351]:
+              - generic [ref=e352]:
+                - generic [ref=e354]:
+                  - heading "Courses" [level=2] [ref=e355]
+                  - paragraph [ref=e356]: Upskill yourself with world-class curriculum.
+                - link "View All" [ref=e357] [cursor=pointer]:
+                  - /url: /courses
+              - generic [ref=e358]:
+                - generic [ref=e359]:
+                  - img "A-Z UI/UX Design Course" [ref=e361]
+                  - generic [ref=e362]:
+                    - paragraph [ref=e363]: Unstop
+                    - heading "A-Z UI/UX Design Course" [level=3] [ref=e364]
+                    - generic [ref=e365]:
+                      - generic [ref=e366]: ₹1,999₹4,999
+                      - generic [ref=e367]:
+                        - img [ref=e368]
+                        - text: 40+ Hours
+                - generic [ref=e370]:
+                  - img "Mastering Data Structures & Algorithms" [ref=e372]
+                  - generic [ref=e373]:
+                    - paragraph [ref=e374]: Unstop
+                    - heading "Mastering Data Structures & Algorithms" [level=3] [ref=e375]
+                    - generic [ref=e376]:
+                      - generic [ref=e377]: ₹2,499₹6,999
+                      - generic [ref=e378]:
+                        - img [ref=e379]
+                        - text: 60+ Hours
+                - generic [ref=e381]:
+                  - img "Complete Product Management Boot Camp" [ref=e383]
+                  - generic [ref=e384]:
+                    - paragraph [ref=e385]: Unstop
+                    - heading "Complete Product Management Boot Camp" [level=3] [ref=e386]
+                    - generic [ref=e387]:
+                      - generic [ref=e388]: ₹2,999₹7,999
+                      - generic [ref=e389]:
+                        - img [ref=e390]
+                        - text: 35+ Hours
+            - generic [ref=e393]:
+              - generic [ref=e394]:
+                - generic [ref=e396]:
+                  - heading "Practice" [level=2] [ref=e397]
+                  - paragraph [ref=e398]: Solve quality problems and crack your dream company.
+                - link "View All" [ref=e399] [cursor=pointer]:
+                  - /url: /practice
+              - generic [ref=e400]:
+                - generic [ref=e401]:
+                  - img "100 Days of Code" [ref=e403]
+                  - generic [ref=e405]:
+                    - heading "100 Days of Code" [level=3] [ref=e406]
+                    - paragraph [ref=e407]: Solve 100 problems in 100 days to win big!
+                - generic [ref=e408]:
+                  - img "Mock Test" [ref=e410]
+                  - generic [ref=e412]:
+                    - heading "Mock Test" [level=3] [ref=e413]
+                    - paragraph [ref=e414]: Skill Based Mock Assessments to ace your prep.
+                - generic [ref=e415]:
+                  - img "Company Preparation" [ref=e417]
+                  - generic [ref=e419]:
+                    - heading "Company Preparation" [level=3] [ref=e420]
+                    - paragraph [ref=e421]: Prepare for your dream company with our curation.
+                - generic [ref=e422]:
+                  - img "Coding Practice" [ref=e424]
+                  - generic [ref=e426]:
+                    - heading "Coding Practice" [level=3] [ref=e427]
+                    - paragraph [ref=e428]: Solve coding problems of different difficulty levels.
+            - generic [ref=e430]:
+              - generic [ref=e431]:
+                - generic [ref=e432]:
+                  - heading "Our Numbers Speak for Themselves" [level=2] [ref=e433]:
+                    - text: Our Numbers
+                    - text: Speak for Themselves
+                  - paragraph [ref=e434]: We believe in creating a world where everyone has the opportunity to learn, grow, and succeed.
+                - generic [ref=e435]:
+                  - generic [ref=e436]: 5M+Active Students
+                  - generic [ref=e437]: 10K+Opportunities
+                  - generic [ref=e438]: 800+Companies
+                  - generic [ref=e439]: 20K+Colleges
+              - generic [ref=e440]:
+                - generic [ref=e441]:
+                  - heading "Are you an Industry Veteran?" [level=3] [ref=e442]
+                  - paragraph [ref=e443]: Share your experience and guide the next generation of talent. Join our elite pool of mentors.
+                - button "Join as a Mentor" [ref=e444]
+          - generic [ref=e446]:
+            - generic [ref=e447]:
+              - generic [ref=e448]:
+                - link "Unstop" [ref=e449] [cursor=pointer]:
+                  - /url: /
+                  - img "Unstop" [ref=e450]
+                - paragraph [ref=e451]: Connecting talent with opportunities. Your one-stop destination for internships, jobs, and competitions.
+                - generic [ref=e452]:
+                  - link [ref=e453] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e454]
+                  - link [ref=e458] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e459]
+                  - link [ref=e462] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e463]
+                  - link [ref=e466] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e467]
+                - generic [ref=e469]:
+                  - generic [ref=e470]:
+                    - img [ref=e471]
+                    - text: support@unstop.com
+                  - generic [ref=e474]:
+                    - img [ref=e475]
+                    - text: +91-11-4113-1111
+              - generic [ref=e477]:
+                - heading "Participate" [level=4] [ref=e478]
+                - list [ref=e479]:
+                  - listitem [ref=e480]:
+                    - link "Competitions" [ref=e481] [cursor=pointer]:
+                      - /url: /competitions
+                  - listitem [ref=e482]:
+                    - link "Quizzes" [ref=e483] [cursor=pointer]:
+                      - /url: /quizzes
+                  - listitem [ref=e484]:
+                    - link "Hackathons" [ref=e485] [cursor=pointer]:
+                      - /url: /hackathons
+                  - listitem [ref=e486]:
+                    - link "Workshops" [ref=e487] [cursor=pointer]:
+                      - /url: /workshops
+                  - listitem [ref=e488]:
+                    - link "Conferences" [ref=e489] [cursor=pointer]:
+                      - /url: /conferences
+                  - listitem [ref=e490]:
+                    - link "Cultural Events" [ref=e491] [cursor=pointer]:
+                      - /url: /cultural-events
+                  - listitem [ref=e492]:
+                    - link "College Festivals" [ref=e493] [cursor=pointer]:
+                      - /url: /college-festivals
+              - generic [ref=e494]:
+                - heading "Apply" [level=4] [ref=e495]
+                - list [ref=e496]:
+                  - listitem [ref=e497]:
+                    - link "Internships" [ref=e498] [cursor=pointer]:
+                      - /url: /internships
+                  - listitem [ref=e499]:
+                    - link "Jobs" [ref=e500] [cursor=pointer]:
+                      - /url: /jobs
+                  - listitem [ref=e501]:
+                    - link "Scholarships" [ref=e502] [cursor=pointer]:
+                      - /url: /scholarships
+                  - listitem [ref=e503]:
+                    - link "Hiring Challenges" [ref=e504] [cursor=pointer]:
+                      - /url: /hiring-challenges
+              - generic [ref=e505]:
+                - heading "Learn" [level=4] [ref=e506]
+                - list [ref=e507]:
+                  - listitem [ref=e508]:
+                    - link "Courses" [ref=e509] [cursor=pointer]:
+                      - /url: /courses
+                  - listitem [ref=e510]:
+                    - link "Articles" [ref=e511] [cursor=pointer]:
+                      - /url: /articles
+                  - listitem [ref=e512]:
+                    - link "Workshops" [ref=e513] [cursor=pointer]:
+                      - /url: /workshops
+                  - listitem [ref=e514]:
+                    - link "Mentorship" [ref=e515] [cursor=pointer]:
+                      - /url: /mentorship
+                  - listitem [ref=e516]:
+                    - link "Practice" [ref=e517] [cursor=pointer]:
+                      - /url: /practice
+                  - listitem [ref=e518]:
+                    - link "Pro Prep" [ref=e519] [cursor=pointer]:
+                      - /url: /pro-prep
+              - generic [ref=e520]:
+                - heading "Our Products" [level=4] [ref=e521]
+                - list [ref=e522]:
+                  - listitem [ref=e523]:
+                    - link "Technology Solutions" [ref=e524] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e525]:
+                    - link "Recruitment Management" [ref=e526] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e527]:
+                    - link "Assessments" [ref=e528] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e529]:
+                    - link "Online Proctoring" [ref=e530] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e531]:
+                    - link "Online Hackathons" [ref=e532] [cursor=pointer]:
+                      - /url: "#"
+              - generic [ref=e533]:
+                - heading "Support" [level=4] [ref=e534]
+                - list [ref=e535]:
+                  - listitem [ref=e536]:
+                    - link "Contact Us" [ref=e537] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e538]:
+                    - link "FAQs" [ref=e539] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e540]:
+                    - link "Privacy Policy" [ref=e541] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e542]:
+                    - link "Terms & Conditions" [ref=e543] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e544]:
+                    - link "Trust & Safety" [ref=e545] [cursor=pointer]:
+                      - /url: "#"
+            - generic [ref=e546]:
+              - generic [ref=e547]: © 2024 Unstop. Built with ❤️ for talent.
+              - generic [ref=e548]:
+                - generic [ref=e549]:
+                  - link "Privacy Policy" [ref=e550] [cursor=pointer]:
+                    - /url: "#"
+                  - link "Terms & Conditions" [ref=e551] [cursor=pointer]:
+                    - /url: "#"
+                - generic [ref=e552]:
+                  - img "Get it on Google Play" [ref=e553]
+                  - img "Download on the App Store" [ref=e554]
+    - generic [ref=e555]:
+      - link "Home" [ref=e556] [cursor=pointer]:
+        - /url: /
+        - text: Home
+      - link "Internships" [ref=e557] [cursor=pointer]:
+        - /url: /internships
+        - text: Internships
+      - link "Jobs" [ref=e558] [cursor=pointer]:
+        - /url: /jobs
+        - text: Jobs
+      - link "Compete" [ref=e559] [cursor=pointer]:
+        - /url: /competitions
+        - text: Compete
+      - link "More" [ref=e560] [cursor=pointer]:
+        - /url: /more
+        - text: More
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  |
+  3  | test('capture sidebar screenshots', async ({ page }) => {
+  4  |   // Use 3000 which is our default dev port
+> 5  |   await page.goto('http://localhost:3000/', { waitUntil: 'load', timeout: 60000 });
+     |              ^ Error: page.goto: Test timeout of 30000ms exceeded.
+  6  |
+  7  |   // Wait for sidebars
+  8  |   await page.waitForSelector('aside', { state: 'visible' });
+  9  |
+  10 |   // Screenshot initial state (Collapsed)
+  11 |   await page.screenshot({ path: 'verification/screenshots/sidebar_fidelity_v2_collapsed.png' });
+  12 |
+  13 |   // Toggle Expand
+  14 |   const toggleBtn = page.locator('button').filter({ has: page.locator('img[src*="squarehalf"]') }).first();
+  15 |   await toggleBtn.click();
+  16 |   await page.waitForTimeout(1000);
+  17 |
+  18 |   // Screenshot expanded state
+  19 |   await page.screenshot({ path: 'verification/screenshots/sidebar_fidelity_v2_expanded.png' });
+  20 | });
+  21 |
+```

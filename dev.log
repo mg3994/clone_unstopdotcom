@@ -1,0 +1,24 @@
+
+> unstop-clone@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.0.2:3001
+\xe2\x9c HEAD / 200 in 201ms (next.js: 7ms, application-code: 194ms)
+ GET / 200 in 357ms (next.js: 6ms, application-code: 352ms)
+ GET / 200 in 302ms (next.js: 4ms, application-code: 298ms)
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "127.0.0.1".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
+
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['127.0.0.1'],
+}
+
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET /jobs 200 in 1488ms (next.js: 1391ms, application-code: 97ms)
+ GET / 200 in 250ms (next.js: 6ms, application-code: 244ms)
