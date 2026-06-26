@@ -1,0 +1,78 @@
+
+> unstop-clone@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 1945ms
+
+ GET / 200 in 1802ms (next.js: 449ms, application-code: 1352ms)
+ GET / 200 in 375ms (next.js: 6ms, application-code: 369ms)
+ HEAD / 200 in 203ms (next.js: 4ms, application-code: 199ms)
+ GET / 200 in 322ms (next.js: 5ms, application-code: 317ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <SegmentViewNode type="layout" pagePath="src/layout...">
+      <SegmentTrieNode>
+      <link>
+      <script>
+      <script>
+      <script>
+      <RootLayout>
+        <html lang="en">
+          <body className="inter_5972...">
+            <SidebarProvider>
+              <LayoutWrapper>
+                <div className="flex h-scr...">
+                  <div>
+                  <main className="flex-grow ...">
+                    <div className="main-conte...">
+                      <div className="main-heade...">
+                        <TopBar onToggleSidebar={function toggleExpanded} isSidebarExpanded={false}>
+                          <div className="flex-grow ...">
+                            <div>
+                            <div className="flex items...">
+                              <div>
+                              <div ref={{current:null}} className="hidden lg:...">
+                                <div>
+                                <input
+                                  type="text"
+                                  value=""
+                                  onChange={function onChange}
+                                  onFocus={function onFocus}
+                                  placeholder="Search Opportunities"
+                                  className="w-full h-10 bg-[#f4f6f9]/50 border border-[#1c4980]/10 rounded-lg pl-10 p..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              ...
+                      ...
+                    ...
+
+ GET / 200 in 343ms (next.js: 6ms, application-code: 337ms)
+ GET / 200 in 227ms (next.js: 7ms, application-code: 220ms)
+ GET / 200 in 228ms (next.js: 7ms, application-code: 221ms)
+ GET / 200 in 245ms (next.js: 6ms, application-code: 238ms)
+ GET / 200 in 225ms (next.js: 6ms, application-code: 219ms)
+ GET / 200 in 253ms (next.js: 5ms, application-code: 248ms)
+ HEAD / 200 in 231ms (next.js: 8ms, application-code: 223ms)
+ GET / 200 in 287ms (next.js: 3ms, application-code: 284ms)
+ GET / 200 in 237ms (next.js: 3ms, application-code: 234ms)
+ GET / 200 in 252ms (next.js: 4ms, application-code: 247ms)
+ GET / 200 in 233ms (next.js: 5ms, application-code: 228ms)
+ GET / 200 in 232ms (next.js: 4ms, application-code: 229ms)
+ GET / 200 in 225ms (next.js: 4ms, application-code: 221ms)
+ GET /jobs 200 in 71ms (next.js: 36ms, application-code: 35ms)
+ GET / 200 in 216ms (next.js: 4ms, application-code: 212ms)

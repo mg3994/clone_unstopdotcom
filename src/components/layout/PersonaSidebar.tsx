@@ -1,11 +1,9 @@
 "use client";
 
 import React from 'react';
-import {
-  Bell,
-  MessageSquare
-} from 'lucide-react';
+import { Bell, MessageSquare } from 'lucide-react';
 import { useSidebar } from '@/context/SidebarContext';
+import { motion } from 'framer-motion';
 
 const personas = [
   {
@@ -29,7 +27,7 @@ const PersonaSidebar = () => {
   const { activePersona, setActivePersona } = useSidebar();
 
   return (
-    <aside className="primary-container bg-[#eff2f6] border-r border-[#E2E2E2] z-[1001] h-full">
+    <aside className="w-[72px] bg-[#eff2f6] flex flex-col flex-shrink-0 z-[1001] h-full relative border-r border-[#E2E2E2]">
       {/* Sidebar Header */}
       <div className="h-16 px-4 py-3 flex items-center justify-center flex-shrink-0">
         <img
@@ -40,28 +38,44 @@ const PersonaSidebar = () => {
       </div>
 
       {/* Persona Rail */}
-      <div className="sidebar flex flex-col items-center pt-2 gap-1 flex-grow overflow-y-auto no-scrollbar w-full">
+      <div className="relative flex flex-col items-end pt-2 gap-1 flex-grow overflow-y-auto no-scrollbar w-full">
         {personas.map((persona) => {
           const isActive = activePersona === persona.id;
           return (
-            <div key={persona.id} className="relative w-full">
+            <div key={persona.id} className="relative w-full flex justify-end">
+              {isActive && (
+                <motion.div
+                  layoutId="activePersonaIndicator"
+                  className="absolute right-[-1px] top-0 bottom-0 w-[calc(100%-12px)] bg-white rounded-tl-[16px] rounded-bl-[16px] z-0"
+                  transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                >
+                  {/* SVG Top Concave Curve */}
+                  <div className="absolute -top-[16px] right-0 w-4 h-4 text-white">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 16C16 7.16344 8.83656 0 0 0H16V16Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  {/* SVG Bottom Concave Curve */}
+                  <div className="absolute -bottom-[16px] right-0 w-4 h-4 text-white">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 0C16 8.83656 8.83656 16 0 16H16V0Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </motion.div>
+              )}
+
               <button
                 onClick={() => setActivePersona(persona.id)}
                 className={`
-                  relative w-full flex flex-col items-center group transition-all duration-300
-                  ${isActive
-                    ? 'text-[#1C4980]'
-                    : 'text-[#383838] opacity-70 group-hover:opacity-100'
-                  }
+                  relative z-10 w-[calc(100%-12px)] py-3 flex flex-col items-center transition-all duration-300
+                  ${isActive ? 'text-[#1C4980]' : 'text-[#383838] opacity-70 hover:opacity-100 mr-1.5 hover:bg-black/5 rounded-xl'}
                 `}
                 aria-label={persona.name}
               >
-                <div className={`img-wrapper ${isActive ? 'active' : ''}`}>
-                   <div className={`w-6 h-6 transition-transform duration-200 ${isActive ? 'scale-110' : 'grayscale'}`}>
-                    <img src={persona.icon} alt={persona.name} className="w-full h-full object-contain" />
-                  </div>
+                <div className={`w-6 h-6 mb-1 transition-transform duration-300 ${isActive ? 'scale-110' : 'grayscale'}`}>
+                  <img src={persona.icon} alt={persona.name} className="w-full h-full object-contain" />
                 </div>
-                <span className={`text-[10px] font-bold tracking-tight mt-1`}>
+                <span className={`text-[10px] font-bold tracking-tight`}>
                   {persona.name}
                 </span>
               </button>
@@ -71,7 +85,7 @@ const PersonaSidebar = () => {
       </div>
 
       {/* Footer Actions */}
-      <div className="mt-auto flex flex-col items-center gap-2 pb-4 flex-shrink-0">
+      <div className="mt-auto flex flex-col items-center gap-2 pb-4 flex-shrink-0 w-full">
         <div className="w-full px-2">
            <button className="w-full py-2.5 flex flex-col items-center text-[#383838] hover:bg-black/5 transition-colors rounded-xl group relative">
              <div className="relative">
@@ -90,7 +104,7 @@ const PersonaSidebar = () => {
         </div>
 
         <div className="mt-2 px-2">
-          <div className="w-10 h-10 rounded-full border border-[#E2E2E2] overflow-hidden cursor-pointer hover:shadow-md transition-all duration-200">
+          <div className="w-10 h-10 rounded-full border border-[#E2E2E2] overflow-hidden cursor-pointer hover:border-[#1C4980] transition-all duration-200">
             <img
               src="https://avatar.iran.liara.run/public/boy?username=Jules"
               alt="User"
